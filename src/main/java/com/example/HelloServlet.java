@@ -31,8 +31,8 @@ public class HelloServlet extends HttpServlet {
 		String pstoken = respo.parse().body().getElementsByAttributeValue("name", "pstoken").val();
 		String contextData = respo.parse().body().getElementsByAttributeValue("name", "contextData").val();
 		String serviceName="PS+Parent+Portal", credentialType="User+Id+and+Password+Credential", pcasServerUrl="/";
-		String username = "joolee";
-		String password = "09070608Jl";
+		String username = "hwarhe";
+		String password = "9wg3Bg!";
 		respo = Jsoup.connect(GRADES_URL)
 				.data("pstoken",pstoken)
 				.data("contextData",contextData)
@@ -51,49 +51,5 @@ public class HelloServlet extends HttpServlet {
         out.write(page.toString().getBytes());
         out.flush();
         out.close();
-		/*
-        ServletOutputStream out = resp.getOutputStream();
-        
-        out.write("Hello Heroku".getBytes());
-        out.flush();
-        out.close();
-        */
-		/*
-		String username = "hwarhe";
-		String password = "9wg3Bg!";
-		String URL = "https://ps01.bergen.org/public/home.html";
-		String LAND = "https://ps01.bergen.org/guardian/home.html";
-		WebClient webClient = new WebClient();
-		webClient.setThrowExceptionOnFailingStatusCode(false);
-		webClient.setThrowExceptionOnScriptError(false);
-		HtmlPage page = webClient.getPage(URL);
-		
-		HtmlForm form = page.getFormByName("LoginForm");
-		HtmlButton button = (HtmlButton) form.getElementById("btn-enter");
-		HtmlTextInput userField = form.getInputByName("account");
-		HtmlPasswordInput passField = form.getInputByName("pw");
-		HtmlHiddenInput ldappasswordField = form.getInputByName("ldappassword");
-		
-		
-		String pstoken = form.getInputByName("pstoken").getValueAttribute();
-		String contextData = form.getInputByName("contextData").getValueAttribute();
-		
-		userField.setValueAttribute(username);
-		passField.setValueAttribute(Base64.sStringToHMACMD5(form.getInputByName("contextData").getValueAttribute(), Base64.encodeBytes(Base64.MD5("password").getBytes())));
-		ldappasswordField.setValueAttribute(password);
-		HtmlPage landing = button.click();
-		
-		HtmlPage landingPage = webClient.getPage(LAND);
-		WebResponse response = landingPage.getWebResponse();
-		String content = response.getContentAsString();
-		ServletOutputStream output = resp.getOutputStream();
-		String debug = "\n\n\n" + pstoken + "\n" + contextData;
-		String testcase = "\nTest case: " + content + debug;
-		
-		output.write(testcase.getBytes());
-		output.flush();
-		output.close();
-		webClient.closeAllWindows();
-		*/
     }
 }
