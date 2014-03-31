@@ -38,12 +38,16 @@ public class HelloServlet extends HttpServlet {
 		webClient.setThrowExceptionOnScriptError(false);
 		HtmlPage page = webClient.getPage(URL);
 		
-
 		HtmlForm form = page.getFormByName("LoginForm");
 		HtmlButton button = (HtmlButton) form.getElementById("btn-enter");
 		HtmlTextInput userField = form.getInputByName("account");
 		HtmlPasswordInput passField = form.getInputByName("pw");
 		HtmlHiddenInput ldappasswordField = form.getInputByName("ldappassword");
+		
+		
+		String pstoken = form.getInputByName("pstoken").getValueAttribute();
+		String contextData = form.getInputByName("contextData").getValueAttribute();
+		
 		userField.setValueAttribute(username);
 		passField.setValueAttribute(Base64.sStringToHMACMD5(form.getInputByName("contextData").getValueAttribute(), Base64.encodeBytes(Base64.MD5("password").getBytes())));
 		ldappasswordField.setValueAttribute(password);
@@ -53,7 +57,9 @@ public class HelloServlet extends HttpServlet {
 		WebResponse response = landingPage.getWebResponse();
 		String content = response.getContentAsString();
 		ServletOutputStream output = resp.getOutputStream();
-		String testcase = "\nTest case: " + content;
+		String debug = "\n\n\n" + pstoken + "\n" + contextData;
+		String testcase = "\nTest case: " + content + debug;
+		
 		output.write(testcase.getBytes());
 		output.flush();
 		output.close();
