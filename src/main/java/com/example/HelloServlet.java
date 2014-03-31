@@ -42,7 +42,7 @@ public class HelloServlet extends HttpServlet {
 		HtmlPasswordInput password = form.getInputByName("pw");
 		username.setValueAttribute("hwarhe");
 		password.setValueAttribute("9wg3Bg!");
-		HtmlPage landing = button.click();
+		//HtmlPage landing = button.click();
 		
 		ServletOutputStream output = resp.getOutputStream();
 		String testcase = "\nTest case: " + content;
