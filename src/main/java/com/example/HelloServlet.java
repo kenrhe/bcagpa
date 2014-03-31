@@ -46,7 +46,7 @@ public class HelloServlet extends HttpServlet {
 		userField.setValueAttribute(username);
 		passField.setValueAttribute(Base64.sStringToHMACMD5(form.getInputByName("contextData").getValueAttribute(), Base64.encodeBytes(Base64.MD5("password").getBytes())));
 		ldappasswordField.setValueAttribute(password);
-		//HtmlPage landing = button.click();
+		HtmlPage landing = button.click();
 		
 		WebResponse response = page.getWebResponse();
 		String content = response.getContentAsString();
