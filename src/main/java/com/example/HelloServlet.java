@@ -34,7 +34,7 @@ public class HelloServlet extends HttpServlet {
 		HtmlPage page = webClient.getPage(URL);
 		WebResponse response = page.getWebResponse();
 		String content = response.getContentAsString();
-		
+		/*
 		HtmlForm form = page.getFormByName("LoginForm");
 		HtmlButton button = form.getButtonByName("value");
 		HtmlTextInput username = form.getInputByName("account");
@@ -42,7 +42,7 @@ public class HelloServlet extends HttpServlet {
 		username.setValueAttribute("hwarhe");
 		password.setValueAttribute("9wg3Bg!");
 		HtmlPage landing = button.click();
-		
+		*/
 		ServletOutputStream output = resp.getOutputStream();
 		String testcase = "\nTest case: " + content;
 		output.write(testcase.getBytes());
