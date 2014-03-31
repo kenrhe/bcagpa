@@ -13,6 +13,7 @@ import com.gargoylesoftware.htmlunit.WebResponse;
 import com.gargoylesoftware.htmlunit.html.HtmlButton;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
 import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 
 public class HelloServlet extends HttpServlet {
@@ -38,7 +39,7 @@ public class HelloServlet extends HttpServlet {
 		HtmlForm form = page.getFormByName("LoginForm");
 		HtmlButton button = (HtmlButton) form.getElementById("btn-enter");
 		HtmlTextInput username = form.getInputByName("account");
-		HtmlTextInput password = form.getInputByName("pw");
+		HtmlPasswordInput password = form.getInputByName("pw");
 		username.setValueAttribute("hwarhe");
 		password.setValueAttribute("9wg3Bg!");
 		HtmlPage landing = button.click();
