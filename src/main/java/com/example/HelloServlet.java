@@ -48,7 +48,8 @@ public class HelloServlet extends HttpServlet {
 		ldappasswordField.setValueAttribute(password);
 		HtmlPage landing = button.click();
 		
-		WebResponse response = page.getWebResponse();
+		
+		WebResponse response = landing.getWebResponse();
 		String content = response.getContentAsString();
 		ServletOutputStream output = resp.getOutputStream();
 		String testcase = "\nTest case: " + content;
