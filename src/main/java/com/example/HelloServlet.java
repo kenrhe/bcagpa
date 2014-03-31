@@ -31,8 +31,8 @@ public class HelloServlet extends HttpServlet {
 		String pstoken = respo.parse().body().getElementsByAttributeValue("name", "pstoken").val();
 		String contextData = respo.parse().body().getElementsByAttributeValue("name", "contextData").val();
 		String serviceName="PS+Parent+Portal", credentialType="User+Id+and+Password+Credential", pcasServerUrl="/";
-		String username = "hwarhe";
-		String password = "9wg3Bg!";
+		String username = "joolee";
+		String password = "09070608Jl";
 		respo = Jsoup.connect(GRADES_URL)
 				.data("pstoken",pstoken)
 				.data("contextData",contextData)
