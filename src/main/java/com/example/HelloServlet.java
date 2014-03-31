@@ -36,7 +36,7 @@ public class HelloServlet extends HttpServlet {
 		String content = response.getContentAsString();
 
 		HtmlForm form = page.getFormByName("LoginForm");
-		HtmlButton button = (HtmlButton) form.getElementById("btn-content");
+		HtmlButton button = (HtmlButton) form.getElementById("btn-enter");
 		HtmlTextInput username = form.getInputByName("account");
 		HtmlTextInput password = form.getInputByName("pw");
 		username.setValueAttribute("hwarhe");
