@@ -12,6 +12,7 @@ import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebResponse;
 import com.gargoylesoftware.htmlunit.html.HtmlButton;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
+import com.gargoylesoftware.htmlunit.html.HtmlHiddenInput;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
 import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
@@ -28,6 +29,8 @@ public class HelloServlet extends HttpServlet {
         out.flush();
         out.close();
         */
+		String username = "hwarhe";
+		String password = "9wg3Bg!";
 		String URL = "https://ps01.bergen.org/public/home.html";
 		WebClient webClient = new WebClient();
 		webClient.setThrowExceptionOnFailingStatusCode(false);
@@ -37,10 +40,12 @@ public class HelloServlet extends HttpServlet {
 
 		HtmlForm form = page.getFormByName("LoginForm");
 		HtmlButton button = (HtmlButton) form.getElementById("btn-enter");
-		HtmlTextInput username = form.getInputByName("account");
-		HtmlPasswordInput password = form.getInputByName("pw");
-		username.setValueAttribute("hwarhe");
-		password.setValueAttribute("9wg3Bg!");
+		HtmlTextInput userField = form.getInputByName("account");
+		HtmlPasswordInput passField = form.getInputByName("pw");
+		HtmlHiddenInput ldappasswordField = form.getInputByName("ldappassword");
+		userField.setValueAttribute(username);
+		passField.setValueAttribute(Base64.sStringToHMACMD5(form.getInputByName("contextData").getValueAttribute(), Base64.encodeBytes(Base64.MD5("password").getBytes())));
+		ldappasswordField.setValueAttribute(password);
 		//HtmlPage landing = button.click();
 		
 		WebResponse response = page.getWebResponse();
