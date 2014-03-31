@@ -32,6 +32,7 @@ public class HelloServlet extends HttpServlet {
 		String username = "hwarhe";
 		String password = "9wg3Bg!";
 		String URL = "https://ps01.bergen.org/public/home.html";
+		String LAND = "https://ps01.bergen.org/guardian/home.html";
 		WebClient webClient = new WebClient();
 		webClient.setThrowExceptionOnFailingStatusCode(false);
 		webClient.setThrowExceptionOnScriptError(false);
@@ -48,8 +49,8 @@ public class HelloServlet extends HttpServlet {
 		ldappasswordField.setValueAttribute(password);
 		HtmlPage landing = button.click();
 		
-		
-		WebResponse response = landing.getWebResponse();
+		HtmlPage landingPage = webClient.getPage(LAND);
+		WebResponse response = landingPage.getWebResponse();
 		String content = response.getContentAsString();
 		ServletOutputStream output = resp.getOutputStream();
 		String testcase = "\nTest case: " + content;
