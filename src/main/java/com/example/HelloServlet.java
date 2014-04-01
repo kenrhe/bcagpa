@@ -69,7 +69,7 @@ public class HelloServlet extends HttpServlet {
 			Element cRow = table.select("tr").get(i);
 			Elements subject = cRow.select("td");
 			if (subject.size() > 10) {
-				builder.append("[new]" + subject.get(11) + "");
+				builder.append("<br>" + subject.get(11).toString().split("\\n")[0]);
 			}
 			
 		}
