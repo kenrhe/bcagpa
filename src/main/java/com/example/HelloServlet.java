@@ -66,7 +66,10 @@ public class HelloServlet extends HttpServlet {
 		for (int i = 0; i < table.select("tr").size(); i++) {
 			Element cRow = table.select("tr").get(i);
 			Elements subject = cRow.select("td");
-			builder.append(subject.get(0) + "\n");
+			if (subject.size() > 0) {
+				builder.append(subject.get(0) + "\n");
+			}
+			
 		}
 		String contents = builder.toString();
 		
