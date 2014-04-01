@@ -50,7 +50,7 @@ public class HelloServlet extends HttpServlet {
 		Element t = page.select("table").first();
 		Iterator<Element> iterator = t.select("td").iterator();
 		while (iterator.hasNext()) {
-			builder.append(iterator.next());
+			builder.append(iterator.next() + "\n");
 		}
 		String table = builder.toString();
 		
