@@ -49,7 +49,12 @@ public class HelloServlet extends HttpServlet {
 		Document page = respo.parse();
         ServletOutputStream out = resp.getOutputStream();
         out.write(page.toString().getBytes());
+        out.write("\n<p><b>Hello!</b></p>".getBytes());
         out.flush();
         out.close();
     }
+	
+	protected void scrape() {
+		
+	}
 }
