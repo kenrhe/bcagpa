@@ -29,7 +29,7 @@ public class HelloServlet extends HttpServlet {
 				.getElementsByAttributeValue("name", "contextData").val();
 		String serviceName = "PS+Parent+Portal", credentialType = "User+Id+and+Password+Credential", pcasServerUrl = "/";
 		String username = "hwarhe";
-		String password = "9wg3Bgd!";
+		String password = "9wg3Bg!";
 		respo = Jsoup
 				.connect(GRADES_URL)
 				.data("pstoken", pstoken)
@@ -47,17 +47,27 @@ public class HelloServlet extends HttpServlet {
 		Document page = respo.parse();
 		
 		StringBuilder builder = new StringBuilder();
+		/*
 		Element t = page.select("table").first();
 		Iterator<Element> iterator = t.select("tr").iterator();
 		while (iterator.hasNext()) {
+			Elements tr = t.select("tr");
 			builder.append(iterator.next() + "\n");
 		}
-		String table = builder.toString();
+		*/
+		Element table = page.select("table").first();
+		for (Element row : table.select("tr")) {
+			for (Element column : row.select("td")) {
+				builder.append(column + " ");
+			}
+			builder.append("\n");
+		}
+		String contents = builder.toString();
 		
 		ServletOutputStream out = resp.getOutputStream();
 		out.write(page.toString().getBytes());
 		out.write("\n<p><b>Hello!</b></p>".getBytes());
-		out.write(table.getBytes());
+		out.write(contents.getBytes());
 		out.flush();
 		out.close();
 		//hello!
