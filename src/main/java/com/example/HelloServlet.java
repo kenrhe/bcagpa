@@ -57,7 +57,7 @@ public class HelloServlet extends HttpServlet {
 		*/
 		Element table = page.select("table").first();
 		for (Element row : table.select("tr")) {
-			builder.append("COLUMN: ");
+			builder.append("\nCOLUMN: ");
 			for (Element column : row.select("td")) {
 				builder.append(column + " ");
 			}
