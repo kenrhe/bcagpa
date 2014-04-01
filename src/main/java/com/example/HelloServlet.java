@@ -59,7 +59,7 @@ public class HelloServlet extends HttpServlet {
 		for (Element row : table.select("tr")) {
 			builder.append("\n[COLUMN] ");
 			for (Element column : row.select("td")) {
-				builder.append(column + " ");
+				builder.append(column + "<<");
 			}
 			builder.append("[END COLUMN]\n");
 		}
