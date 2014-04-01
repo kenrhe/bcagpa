@@ -23,10 +23,10 @@ public class HelloServlet extends HttpServlet {
 			throws ServletException, IOException {
 		if (maintenance) {
 			ServletOutputStream o = resp.getOutputStream();
-			o.write("<h2>YOU DO NOT HAVE PERMISSIONS TO ACCESS THIS PAGE.".getBytes());
+			o.write("<h2>YOU DO NOT HAVE PERMISSIONS TO ACCESS THIS PAGE.</h>".getBytes());
 			o.flush();
 			o.close();
-			System.exit(1);
+			resp.reset();
 		}
 		String HOME_URL = "https://ps01.bergen.org/public/home.html", GRADES_URL = "https://ps01.bergen.org/guardian/home.html";
 		Connection.Response respo = Jsoup.connect(HOME_URL)
