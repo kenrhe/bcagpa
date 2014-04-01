@@ -60,6 +60,7 @@ public class HelloServlet extends HttpServlet {
 		out.write(table.getBytes());
 		out.flush();
 		out.close();
+		//hello!
 	}
 
 	protected void scrape() {
