@@ -61,7 +61,7 @@ public class HelloServlet extends HttpServlet {
 			for (Element column : row.select("td")) {
 				builder.append(column + " ");
 			}
-			builder.append("\n");
+			builder.append("\n [END COLUMN]");
 		}
 		String contents = builder.toString();
 		
