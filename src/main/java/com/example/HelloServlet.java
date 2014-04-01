@@ -62,12 +62,12 @@ public class HelloServlet extends HttpServlet {
 				builder.append(column + "<<");
 			}
 		}
-		builder.append("\n");
+		builder.append("\n\n\n\n\n\n[NEW LINE]");
 		for (int i = 0; i < table.select("tr").size(); i++) {
 			Element cRow = table.select("tr").get(i);
 			Elements subject = cRow.select("td");
-			if (subject.size() > 11) {
-				builder.append(subject.get(12) + "\n");
+			if (subject.size() > 10) {
+				builder.append(subject.get(11) + "\n");
 			}
 			
 		}
