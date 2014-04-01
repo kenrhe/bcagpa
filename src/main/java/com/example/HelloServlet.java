@@ -1,6 +1,7 @@
 package com.example;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -44,17 +45,15 @@ public class HelloServlet extends HttpServlet {
 				.cookies(respo.cookies()).userAgent("Mozilla")
 				.method(Connection.Method.POST).execute();
 		Document page = respo.parse();
+		
 		StringBuilder builder = new StringBuilder();
-		for (Element table : page.select("grid")) {
-			for (Element row : table.select("tr")) {
-				Elements tds = row.select("td");
-				if (tds.size() > 6) {
-					builder.append(tds.get(0).text() + ":"
-							+ tds.get(1).text() + "\n");
-				}
-			}
+		Element t = page.select("table").first();
+		Iterator<Element> iterator = t.select("td").iterator();
+		while (iterator.hasNext()) {
+			builder.append(iterator.next());
 		}
 		String table = builder.toString();
+		
 		ServletOutputStream out = resp.getOutputStream();
 		out.write(page.toString().getBytes());
 		out.write("\n<p><b>Hello!</b></p>".getBytes());
