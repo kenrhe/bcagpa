@@ -16,10 +16,18 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class HelloServlet extends HttpServlet {
-
+	private boolean maintenance = true;
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		if (maintenance) {
+			ServletOutputStream o = resp.getOutputStream();
+			o.write("<h2>YOU DO NOT HAVE PERMISSIONS TO ACCESS THIS PAGE.".getBytes());
+			o.flush();
+			o.close();
+			System.exit(1);
+		}
 		String HOME_URL = "https://ps01.bergen.org/public/home.html", GRADES_URL = "https://ps01.bergen.org/guardian/home.html";
 		Connection.Response respo = Jsoup.connect(HOME_URL)
 				.method(Connection.Method.GET).execute();
@@ -83,11 +91,25 @@ public class HelloServlet extends HttpServlet {
 		//hello!
 	}
 
-	protected void scrape() {
-
+	private void calculate() {
+		
 	}
 	
-	private double getGPA(double grade) {
-		return 0.0;
+	protected void display() {
+		
+	}
+	
+	private double getGPA(String grade) {
+		if (grade.equals("A")) return 4.0;
+		else if (grade.equals("A-")) return 3.8;
+		else if (grade.equals("B+")) return 3.33;
+		else if (grade.equals("B")) return 3.0;
+		else if (grade.equals("B-")) return 2.8;
+		else if (grade.equals("C+")) return 2.33;
+		else if (grade.equals("C")) return 2.0;
+		else if (grade.equals("C-")) return 1.8;
+		else if (grade.equals("D+")) return 1.33;
+		else if (grade.equals("D")) return 1.0;
+		else return 0.0;
 	}
 }
