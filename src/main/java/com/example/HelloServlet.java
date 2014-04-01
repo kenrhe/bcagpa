@@ -48,7 +48,7 @@ public class HelloServlet extends HttpServlet {
 		
 		StringBuilder builder = new StringBuilder();
 		Element table = page.select("table").first();
-		/*
+		
 		Element t = page.select("table").first();
 		Iterator<Element> iterator = t.select("tr").iterator();
 		while (iterator.hasNext()) {
@@ -62,14 +62,14 @@ public class HelloServlet extends HttpServlet {
 				builder.append(column + "<<");
 			}
 		}
-		*/
 		
+		builder.append("<br><br>");
 		builder.append("[The name is Stinky Bob]");
 		for (int i = 0; i < table.select("tr").size(); i++) {
 			Element cRow = table.select("tr").get(i);
 			Elements subject = cRow.select("td");
 			if (subject.size() > 10) {
-				builder.append("<br>" + subject.get(11).toString().split("\\[DLM\\]")[0]);
+				builder.append("<br>" + subject.get(11) + " " + subject.get(12) + " " + subject.get(13) + " " + subject.get(14));
 			}
 			
 		}
@@ -86,5 +86,9 @@ public class HelloServlet extends HttpServlet {
 
 	protected void scrape() {
 
+	}
+	
+	private double getGPA(double grade) {
+		return 0.0;
 	}
 }
