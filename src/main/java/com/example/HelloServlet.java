@@ -54,7 +54,7 @@ public class HelloServlet extends HttpServlet {
 			Elements tr = t.select("tr");
 			builder.append(iterator.next() + "\n");
 		}
-		*/
+		
 		Element table = page.select("table").first();
 		for (Element row : table.select("tr")) {
 			builder.append("[new row]");
@@ -62,12 +62,13 @@ public class HelloServlet extends HttpServlet {
 				builder.append(column + "<<");
 			}
 		}
+		*/
 		builder.append("[The name is Stinky Bob]");
 		for (int i = 0; i < table.select("tr").size(); i++) {
 			Element cRow = table.select("tr").get(i);
 			Elements subject = cRow.select("td");
-			if (subject.size() > 11) {
-				builder.append(subject.get(12) + "\n");
+			if (subject.size() > 10) {
+				builder.append(subject.get(11) + "\n");
 			}
 			
 		}
