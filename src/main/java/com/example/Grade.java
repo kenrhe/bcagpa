@@ -14,7 +14,7 @@ public class Grade {
 	}
 	
 	public String getGrade() {
-		if ()
+		return "";
 	}
 }
 

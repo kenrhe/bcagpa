@@ -52,7 +52,6 @@ public class HelloServlet extends HttpServlet {
 		Element t = page.select("table").first();
 		Iterator<Element> iterator = t.select("tr").iterator();
 		while (iterator.hasNext()) {
-			Elements tr = t.select("tr");
 			builder.append(iterator.next() + "\n");
 		}
 		
