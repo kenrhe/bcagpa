@@ -2,19 +2,19 @@ package com.example;
 
 public class Grade {
 	private String subject;
-	private double grade;
+	private double gradePoints;
 	
-	public Grade(String subject, double grade) { 
+	public Grade(String subject, double gradePoints) { 
 		this.subject = subject;
-		this.grade = grade;
+		this.gradePoints = gradePoints;
 	}
 
 	public String getSubject() {
 		return this.subject;
 	}
 	
-	public String getGrade() {
-		return "";
+	public double getGrade() {
+		return this.gradePoints;
 	}
 }
 
