@@ -48,9 +48,9 @@ public class HelloServlet extends HttpServlet {
 		
 		StringBuilder builder = new StringBuilder();
 		Element t = page.select("table").first();
-		Iterator<Element> iterator = t.select("td").iterator();
+		Iterator<Element> iterator = t.select("tr").iterator();
 		while (iterator.hasNext()) {
-			builder.append(iterator.next().text() + "\n");
+			builder.append(iterator.next() + "\n");
 		}
 		String table = builder.toString();
 		
