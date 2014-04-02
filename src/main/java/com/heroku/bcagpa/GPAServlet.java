@@ -82,6 +82,9 @@ public class GPAServlet extends HttpServlet {
 				String first = column.get(12).text();
 				String second = column.get(13).text();
 				String third = column.get(14).text();
+				if (!isValid(subject, new String[]{first,second,third})) {
+					continue;
+				}
 				builder.append("[Mods]" + mods + "[Subject]" + subject + "[Grades]" + first + "," + second + "," + third + "\n");
 			}
 		}
@@ -92,18 +95,16 @@ public class GPAServlet extends HttpServlet {
 		return 0.0;
 	}
 	
-	private double getGPA(String grade) {
-		if (grade.equals("A")) return 4.0;
-		else if (grade.equals("A-")) return 3.8;
-		else if (grade.equals("B+")) return 3.33;
-		else if (grade.equals("B")) return 3.0;
-		else if (grade.equals("B-")) return 2.8;
-		else if (grade.equals("C+")) return 2.33;
-		else if (grade.equals("C")) return 2.0;
-		else if (grade.equals("C-")) return 1.8;
-		else if (grade.equals("D+")) return 1.33;
-		else if (grade.equals("D")) return 1.0;
-		else return 0.0;
+	private boolean isValid(String subject, String[] gradesList) {
+		if (subject.contains("~")) {
+			return false;
+		}
+		for (int i = 0; i < gradesList.length; i++) {
+			if (gradesList[i].contains("-") || gradesList[i].contains("?") || gradesList[i].contains("P")) {
+				return false;
+			}
+		}
+		return true;
 	}
 	
 }
