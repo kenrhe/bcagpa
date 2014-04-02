@@ -7,7 +7,7 @@
   
 </head>
 <body>
-    <form name="login" action="/hello" method="get">
+    <form name="login" action="/GPA" method="get">
     	Username: <input type="text" name="username"><br>
     	Password: <input type="password" name="password">
     	<input type="submit" value="Login">
