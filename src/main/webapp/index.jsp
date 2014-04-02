@@ -7,7 +7,7 @@
   
 </head>
 <body>
-    <form name="login" action="/GPA" method="POST">
+    <form name="login" action="/gpa" method="POST">
     	Username: <input type="text" name="username"><br>
     	Password: <input type="password" name="password">
     	<input type="submit" value="Login">
