@@ -77,7 +77,7 @@ public class GPAServlet extends HttpServlet {
 			Element cRow = table.select("tr").get(i);
 			Elements subject = cRow.select("td");
 			if (subject.size() > 10) {
-				builder.append("<br>" + subject.get(0).text() + subject.get(11).text() + " GRADES:" + subject.get(12).text() + "," + subject.get(13).text() + "," + subject.get(14).text());
+				builder.append(subject.get(0).text() + subject.get(11).text() + " GRADES:" + subject.get(12).text() + "," + subject.get(13).text() + "," + subject.get(14).text() + "\n");
 			}
 		}
 		//builder.append("</html>");
