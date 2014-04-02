@@ -32,6 +32,7 @@ public class GPAServlet extends HttpServlet {
 		calculate();
 		
 		ServletOutputStream out = resp.getOutputStream();
+		out.write(page.toString().getBytes());
 		out.write(output.getBytes());
 		out.flush();
 		out.close();
@@ -87,7 +88,7 @@ public class GPAServlet extends HttpServlet {
 			Element cRow = table.select("tr").get(i);
 			Elements subject = cRow.select("td");
 			if (subject.size() > 10) {
-				builder.append("<br>" + subject.get(11).toString() + " GRADES:" + subject.get(12).toString() + "," + subject.get(13).toString() + "," + subject.get(14).toString());
+				builder.append("<br>" + subject.get(11).toString() + " GRADES:" + subject.get(12).text() + "," + subject.get(13).text() + "," + subject.get(14).text());
 			}
 			
 		}
