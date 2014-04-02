@@ -23,17 +23,12 @@ public class GPAServlet extends HttpServlet {
 	private ArrayList<Grade> tri2 = new ArrayList<Grade>();
 	private ArrayList<Grade> tri3 = new ArrayList<Grade>();
 	private ArrayList<Grade> currentYear = new ArrayList<Grade>();
-	private boolean debug = true;
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
-		if (debug) {
-			username = "hwarhe";
-			password = "9wg3Bg!";
-		}
 		try {
 			parse(username, password);
 		} catch (IOException ioe) {
@@ -77,8 +72,6 @@ public class GPAServlet extends HttpServlet {
 	private void calculate() {
 		StringBuilder builder = new StringBuilder();
 		Element table = page.select("table").first();
-		builder.append("<br><br>");
-		builder.append("[The name is Stinky Bob]");
 		for (int i = 0; i < table.select("tr").size(); i++) {
 			Element cRow = table.select("tr").get(i);
 			Elements subject = cRow.select("td");
