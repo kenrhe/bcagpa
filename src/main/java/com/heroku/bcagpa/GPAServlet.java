@@ -71,6 +71,7 @@ public class GPAServlet extends HttpServlet {
 	
 	private void calculate() {
 		StringBuilder builder = new StringBuilder();
+		builder.append("[Start]\n");
 		Element table = page.select("table").first();
 		for (int i = 0; i < table.select("tr").size(); i++) {
 			Element row = table.select("tr").get(i);
