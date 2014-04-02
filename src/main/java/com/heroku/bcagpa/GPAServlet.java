@@ -17,7 +17,7 @@ import org.jsoup.select.Elements;
 
 public class GPAServlet extends HttpServlet {
 	private Document page;
-	
+	/*
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -104,4 +104,5 @@ public class GPAServlet extends HttpServlet {
 		else if (grade.equals("D")) return 1.0;
 		else return 0.0;
 	}
+	*/
 }
