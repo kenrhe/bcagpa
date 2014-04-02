@@ -71,17 +71,24 @@ public class GPAServlet extends HttpServlet {
 	
 	private void calculate() {
 		StringBuilder builder = new StringBuilder();
-		//builder.append("<html>");
 		Element table = page.select("table").first();
 		for (int i = 0; i < table.select("tr").size(); i++) {
-			Element cRow = table.select("tr").get(i);
-			Elements subject = cRow.select("td");
-			if (subject.size() > 10) {
-				builder.append(subject.get(0).text() + subject.get(11).text() + " GRADES:" + subject.get(12).text() + "," + subject.get(13).text() + "," + subject.get(14).text() + "\n");
+			Element row = table.select("tr").get(i);
+			Elements column = row.select("td");
+			if (column.size() > 10) {
+				String mods = column.get(0).text();
+				String subject = column.get(11).text();
+				String first = column.get(12).text();
+				String second = column.get(13).text();
+				String third = column.get(14).text();
+				builder.append("[Mods]" + mods + "[Subject]" + subject + "[Grades]" + first + "," + second + "," + third + "\n");
 			}
 		}
-		//builder.append("</html>");
 		this.output = builder.toString();
+	}
+	
+	private double findCredits(String mods) {
+		return 0.0;
 	}
 	
 	private double getGPA(String grade) {
