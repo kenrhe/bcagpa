@@ -1,6 +1,7 @@
 package com.heroku.bcagpa;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.servlet.ServletException;
@@ -18,6 +19,10 @@ import org.jsoup.select.Elements;
 public class GPAServlet extends HttpServlet {
 	private Document page;
 	private String output;
+	private ArrayList<Grade> tri1 = new ArrayList<Grade>();
+	private ArrayList<Grade> tri2 = new ArrayList<Grade>();
+	private ArrayList<Grade> tri3 = new ArrayList<Grade>();
+	private ArrayList<Grade> currentYear = new ArrayList<Grade>();
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
