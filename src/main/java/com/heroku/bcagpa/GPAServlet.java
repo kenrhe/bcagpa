@@ -47,7 +47,6 @@ public class GPAServlet extends HttpServlet {
 				.getElementsByAttributeValue("name", "pstoken").val();
 		String contextData = r.parse().body()
 				.getElementsByAttributeValue("name", "contextData").val();
-
 		r = Jsoup
 				.connect(GRADES_URL)
 				.data("pstoken", pstoken)
@@ -88,9 +87,8 @@ public class GPAServlet extends HttpServlet {
 			Element cRow = table.select("tr").get(i);
 			Elements subject = cRow.select("td");
 			if (subject.size() > 10) {
-				builder.append("<br>" + subject.get(11).text() + " GRADES:" + subject.get(12).text() + "," + subject.get(13).text() + "," + subject.get(14).text());
+				builder.append("<br>" + subject.get(1).text() + subject.get(11).text() + " GRADES:" + subject.get(12).text() + "," + subject.get(13).text() + "," + subject.get(14).text());
 			}
-			
 		}
 		this.output = builder.toString();
 	}
