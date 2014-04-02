@@ -21,6 +21,7 @@ public class HelloServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		resp.sendError(0);
 		String HOME_URL = "https://ps01.bergen.org/public/home.html", GRADES_URL = "https://ps01.bergen.org/guardian/home.html";
 		Connection.Response respo = Jsoup.connect(HOME_URL)
 				.method(Connection.Method.GET).execute();
