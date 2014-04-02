@@ -71,7 +71,7 @@ public class GPAServlet extends HttpServlet {
 	
 	private void calculate() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("<html>");
+		//builder.append("<html>");
 		Element table = page.select("table").first();
 		for (int i = 0; i < table.select("tr").size(); i++) {
 			Element cRow = table.select("tr").get(i);
@@ -80,7 +80,7 @@ public class GPAServlet extends HttpServlet {
 				builder.append("<br>" + subject.get(0).text() + subject.get(11).text() + " GRADES:" + subject.get(12).text() + "," + subject.get(13).text() + "," + subject.get(14).text());
 			}
 		}
-		builder.append("</html>");
+		//builder.append("</html>");
 		this.output = builder.toString();
 	}
 	
