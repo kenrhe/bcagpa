@@ -41,8 +41,8 @@ public class Main {
         
         server.setHandler(root);
         
-        //server.start();
-        //server.join();   
+        server.start();
+        server.join();   
     }
 
 }
