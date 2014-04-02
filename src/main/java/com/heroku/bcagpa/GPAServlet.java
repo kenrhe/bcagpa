@@ -82,7 +82,10 @@ public class GPAServlet extends HttpServlet {
 				String first = column.get(12).text();
 				String second = column.get(13).text();
 				String third = column.get(14).text();
-				if (!isValid(subject, new String[]{first,second,third})) {
+				if (subject.contains("~")) {
+					continue;
+				}
+				if ((!isGradeValid(first)) || (!isGradeValid(second)) || (!isGradeValid(third))) {
 					continue;
 				}
 				builder.append("[Mods]" + mods + "[Subject]" + subject + "[Grades]" + first + "," + second + "," + third + "\n");
@@ -95,14 +98,9 @@ public class GPAServlet extends HttpServlet {
 		return 0.0;
 	}
 	
-	private boolean isValid(String subject, String[] gradesList) {
-		if (subject.contains("~")) {
+	private boolean isGradeValid(String grade) {
+		if (grade.contains("P") || grade.contains("-") || grade.contains("?")) {
 			return false;
-		}
-		for (int i = 0; i < gradesList.length; i++) {
-			if (gradesList[i].contains("-") || gradesList[i].contains("?") || gradesList[i].contains("P")) {
-				return false;
-			}
 		}
 		return true;
 	}
