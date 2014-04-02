@@ -3,6 +3,8 @@ package com.heroku.bcagpa;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -85,6 +87,9 @@ public class GPAServlet extends HttpServlet {
 				if (subject.contains("~")) {
 					continue;
 				}
+				
+				double credits = findCredits(mods);
+				
 				builder.append("[Mods]" + mods + "[Subject]" + subject + "[Grades]" + first + "," + second + "," + third + "\n");
 			}
 		}
@@ -92,6 +97,14 @@ public class GPAServlet extends HttpServlet {
 	}
 	
 	private double findCredits(String mods) {
+		String pattern = "\\d\\d-\\d\\d"; //01-03(M,W-F)
+		String line = "01-03(M,W-F)";
+		Pattern p = Pattern.compile(pattern);
+		Matcher matcher = p.matcher(line);
+		if (matcher.find()) {
+			String matched = matcher.group(0);
+			System.out.println(matched);
+		}
 		return 0.0;
 	}
 	
