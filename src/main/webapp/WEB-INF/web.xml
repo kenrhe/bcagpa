@@ -9,13 +9,13 @@
 	</welcome-file-list>
 
 	<servlet>
-		<servlet-name>hello</servlet-name>
-		<servlet-class>com.example.HelloServlet</servlet-class>
+		<servlet-name>GPA</servlet-name>
+		<servlet-class>com.heroku.bcagpa.GPAServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>hello</servlet-name>
-		<url-pattern>/hello</url-pattern>
+		<servlet-name>GPA</servlet-name>
+		<url-pattern>/GPA</url-pattern>
 	</servlet-mapping>
 
 

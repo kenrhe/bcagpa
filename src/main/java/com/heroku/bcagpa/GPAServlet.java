@@ -17,21 +17,34 @@ import org.jsoup.select.Elements;
 
 public class GPAServlet extends HttpServlet {
 	private Document page;
-	/*
+	private String output;
+	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
+		String username = req.getParameter("username");
+		String password = req.getParameter("password");
+		try {
+			parse(username, password);
+		} catch (IOException ioe) {
+			
+		}
+		ServletOutputStream out = resp.getOutputStream();
+		out.write(output.getBytes());
+		out.flush();
+		out.close();
+	}
+	
+	private void parse(String username, String password) throws IOException {
 		String HOME_URL = "https://ps01.bergen.org/public/home.html", GRADES_URL = "https://ps01.bergen.org/guardian/home.html";
+		String serviceName = "PS+Parent+Portal", credentialType = "User+Id+and+Password+Credential", pcasServerUrl = "/";
 		Connection.Response r = Jsoup.connect(HOME_URL)
 				.method(Connection.Method.GET).execute();
 		String pstoken = r.parse().body()
 				.getElementsByAttributeValue("name", "pstoken").val();
 		String contextData = r.parse().body()
 				.getElementsByAttributeValue("name", "contextData").val();
-		String serviceName = "PS+Parent+Portal", credentialType = "User+Id+and+Password+Credential", pcasServerUrl = "/";
-		String username = "hwarhe";
-		String password = "9wg3Bg!";
+
 		r = Jsoup
 				.connect(GRADES_URL)
 				.data("pstoken", pstoken)
@@ -48,9 +61,7 @@ public class GPAServlet extends HttpServlet {
 				.method(Connection.Method.POST).execute();
 		this.page = r.parse();
 	}
-	private void parse() {
-		
-	}
+	
 	private void calculate() {
 		StringBuilder builder = new StringBuilder();
 		Element table = page.select("table").first();
@@ -78,19 +89,7 @@ public class GPAServlet extends HttpServlet {
 			}
 			
 		}
-		String contents = builder.toString();
-		
-		ServletOutputStream out = resp.getOutputStream();
-		out.write(page.toString().getBytes());
-		out.write("\n<p><b>Hello!</b></p>".getBytes());
-		out.write(contents.getBytes());
-		out.flush();
-		out.close();
-		//hello!
-	}
-	
-	protected void display() {
-		
+		this.output = builder.toString();
 	}
 	
 	private double getGPA(String grade) {
@@ -106,5 +105,5 @@ public class GPAServlet extends HttpServlet {
 		else if (grade.equals("D")) return 1.0;
 		else return 0.0;
 	}
-	*/
+	
 }
