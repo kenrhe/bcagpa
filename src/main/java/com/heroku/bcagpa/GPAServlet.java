@@ -29,6 +29,7 @@ public class GPAServlet extends HttpServlet {
 		} catch (IOException ioe) {
 			
 		}
+		
 		ServletOutputStream out = resp.getOutputStream();
 		out.write(output.getBytes());
 		out.flush();
