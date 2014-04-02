@@ -85,9 +85,6 @@ public class GPAServlet extends HttpServlet {
 				if (subject.contains("~")) {
 					continue;
 				}
-				if ((!isGradeValid(first)) || (!isGradeValid(second)) || (!isGradeValid(third))) {
-					continue;
-				}
 				builder.append("[Mods]" + mods + "[Subject]" + subject + "[Grades]" + first + "," + second + "," + third + "\n");
 			}
 		}
