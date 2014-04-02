@@ -23,16 +23,16 @@ public class GPAServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		String HOME_URL = "https://ps01.bergen.org/public/home.html", GRADES_URL = "https://ps01.bergen.org/guardian/home.html";
-		Connection.Response respo = Jsoup.connect(HOME_URL)
+		Connection.Response r = Jsoup.connect(HOME_URL)
 				.method(Connection.Method.GET).execute();
-		String pstoken = respo.parse().body()
+		String pstoken = r.parse().body()
 				.getElementsByAttributeValue("name", "pstoken").val();
-		String contextData = respo.parse().body()
+		String contextData = r.parse().body()
 				.getElementsByAttributeValue("name", "contextData").val();
 		String serviceName = "PS+Parent+Portal", credentialType = "User+Id+and+Password+Credential", pcasServerUrl = "/";
 		String username = "hwarhe";
 		String password = "9wg3Bg!";
-		respo = Jsoup
+		r = Jsoup
 				.connect(GRADES_URL)
 				.data("pstoken", pstoken)
 				.data("contextData", contextData)
@@ -44,11 +44,13 @@ public class GPAServlet extends HttpServlet {
 				.data("pw",
 						Base64.sStringToHMACMD5(contextData, Base64
 								.encodeBytes(Base64.MD5("password").getBytes())))
-				.cookies(respo.cookies()).userAgent("Mozilla")
+				.cookies(r.cookies()).userAgent("Mozilla")
 				.method(Connection.Method.POST).execute();
-		this.page = respo.parse();
+		this.page = r.parse();
 	}
-
+	private void parse() {
+		
+	}
 	private void calculate() {
 		StringBuilder builder = new StringBuilder();
 		Element table = page.select("table").first();
