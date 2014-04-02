@@ -21,7 +21,6 @@ public class HelloServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		*/
 		String HOME_URL = "https://ps01.bergen.org/public/home.html", GRADES_URL = "https://ps01.bergen.org/guardian/home.html";
 		Connection.Response respo = Jsoup.connect(HOME_URL)
 				.method(Connection.Method.GET).execute();
@@ -31,7 +30,7 @@ public class HelloServlet extends HttpServlet {
 				.getElementsByAttributeValue("name", "contextData").val();
 		String serviceName = "PS+Parent+Portal", credentialType = "User+Id+and+Password+Credential", pcasServerUrl = "/";
 		String username = "hwarhe";
-		String password = "9wg3Bg!";
+		String password = "yourmum";
 		respo = Jsoup
 				.connect(GRADES_URL)
 				.data("pstoken", pstoken)
