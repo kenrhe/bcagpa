@@ -38,9 +38,16 @@ public class GPAServlet extends HttpServlet {
 		}
 		calculate();
 		
+		StringBuilder builder = new StringBuilder();
+		builder.append("Trimester 1 GPA: " + tri1);
+		builder.append("\nTrimester 2 GPA: " + tri2);
+		builder.append("\nTrimester 3 GPA: " + tri3);
+
+		
 		ServletOutputStream out = resp.getOutputStream();
 		//out.write(page.toString().getBytes());
-		out.write(output.getBytes());
+		
+		out.write(builder.toString().getBytes());
 		out.flush();
 		out.close();
 	}
