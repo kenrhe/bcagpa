@@ -2,7 +2,6 @@ package com.heroku.bcagpa;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -90,22 +89,54 @@ public class GPAServlet extends HttpServlet {
 				
 				double credits = findCredits(mods);
 				
-				builder.append("[Mods]" + mods + "[Subject]" + subject + "[Grades]" + first + "," + second + "," + third + "\n");
+				builder.append("[Credits] " + credits + "[Mods]" + mods + "[Subject]" + subject + "[Grades]" + first + "," + second + "," + third + "\n");
 			}
 		}
 		this.output = builder.toString();
 	}
 	
 	private double findCredits(String mods) {
-		String pattern = "\\d\\d-\\d\\d"; //01-03(M,W-F)
-		String line = "01-03(M,W-F)";
+		double numberOfMods = 0.0;
+		double numberOfTimes = 0.0;
+		String modsPattern = "\\d\\d-\\d\\d";
+		String daysPattern = "\\((.*)\\)";
+		
+		String modsMatch = match(modsPattern, mods);
+		String daysMatch = match(daysPattern, mods);
+		
+		double modsBegin = Double.parseDouble(modsMatch.split("-")[0]);
+		double modsEnd = Double.parseDouble(modsMatch.split("-")[1]);
+		
+		numberOfMods = (modsEnd-modsBegin)+1.0;
+		
+		String[] days = daysMatch.split(",");
+		for (int i = 0; i < days.length; i++) {
+			if (days[i].length() == 1) {
+				numberOfTimes += 1.0;
+			} else if (days[i].length() == 3) {
+				String day = days[i];
+				day.replaceAll("M", "01");
+				day.replaceAll("T", "02");
+				day.replaceAll("W", "03");
+				day.replaceAll("R", "04");
+				day.replaceAll("F", "05");
+				numberOfTimes += Double.parseDouble(day.split("-")[1]) - Double.parseDouble(day.split("-")[0]) + 1.0;
+			} else {
+				//error;
+			}
+		}
+		
+		
+		return (numberOfMods*numberOfTimes)/2.0;
+	}
+	
+	private String match(String pattern, String line) {
 		Pattern p = Pattern.compile(pattern);
 		Matcher matcher = p.matcher(line);
 		if (matcher.find()) {
-			String matched = matcher.group(0);
-			System.out.println(matched);
+			return matcher.group(0);
 		}
-		return 0.0;
+		return null;
 	}
 	
 	private boolean isGradeValid(String grade) {

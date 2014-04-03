@@ -1,3 +1,4 @@
+/*
 package com.example;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ import org.jsoup.select.Elements;
 
 public class HelloServlet extends HttpServlet {
 	private boolean maintenance = true;
-	/*
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -105,5 +106,6 @@ public class HelloServlet extends HttpServlet {
 		else if (grade.equals("D")) return 1.0;
 		else return 0.0;
 	}
-	*/
+	
 }
+*/
