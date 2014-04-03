@@ -83,11 +83,18 @@ public class GPAServlet extends HttpServlet {
 				String first = column.get(12).text();
 				String second = column.get(13).text();
 				String third = column.get(14).text();
+				double credits = 0.0;
 				if (subject.contains("~")) {
 					continue;
 				}
-				
-				double credits = findCredits(mods);
+				String[] modsArray = mods.split(" ");
+				if (modsArray.length > 1) {
+					for (int j = 0; j < modsArray.length; j++) {
+						credits += findCredits(modsArray[j]);
+					}
+				} else {
+					credits = findCredits(mods);
+				}
 				
 				builder.append("[Credits] " + credits + "[Mods]" + mods + "[Subject]" + subject + "[Grades]" + first + "," + second + "," + third + "\n");
 			}
@@ -102,13 +109,21 @@ public class GPAServlet extends HttpServlet {
 		String daysPattern = "\\((.*)\\)";
 		
 		String modsMatch = match(modsPattern, mods);
+		if (modsMatch.equals(null)) {
+			modsMatch = "10";
+		}
 		String daysMatch = match(daysPattern, mods);
 		daysMatch = daysMatch.substring(1, daysMatch.length()-1);
+		if (modsMatch.length() == 2) {
+			numberOfMods = 1;
+		} else {
+			double modsBegin = Double.parseDouble(modsMatch.split("-")[0]);
+			double modsEnd = Double.parseDouble(modsMatch.split("-")[1]);
+			
+			numberOfMods = (modsEnd-modsBegin)+1.0;
+		}
 		
-		double modsBegin = Double.parseDouble(modsMatch.split("-")[0]);
-		double modsEnd = Double.parseDouble(modsMatch.split("-")[1]);
-		
-		numberOfMods = (modsEnd-modsBegin)+1.0;
+
 		
 		String[] days = daysMatch.split(",");
 		for (int i = 0; i < days.length; i++) {
