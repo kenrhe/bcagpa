@@ -109,7 +109,7 @@ public class GPAServlet extends HttpServlet {
 		String daysPattern = "\\((.*)\\)";
 		
 		String modsMatch = match(modsPattern, mods);
-		if (modsMatch.equals(null)) {
+		if (modsMatch.equals("ERROR")) {
 			modsMatch = "10";
 		}
 		String daysMatch = match(daysPattern, mods);
@@ -150,7 +150,7 @@ public class GPAServlet extends HttpServlet {
 		if (matcher.find()) {
 			return matcher.group(0);
 		}
-		return null;
+		return "ERROR";
 	}
 	
 	private boolean isGradeValid(String grade) {
