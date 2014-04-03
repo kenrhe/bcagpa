@@ -39,9 +39,9 @@ public class GPAServlet extends HttpServlet {
 		calculate();
 		
 		StringBuilder builder = new StringBuilder();
-		builder.append("Trimester 1 GPA: " + tri1);
-		builder.append("\nTrimester 2 GPA: " + tri2);
-		builder.append("\nTrimester 3 GPA: " + tri3);
+		builder.append("Trimester 1 GPA: " + tri1GPA);
+		builder.append("\nTrimester 2 GPA: " + tri2GPA);
+		builder.append("\nTrimester 3 GPA: " + tri3GPA);
 
 		
 		ServletOutputStream out = resp.getOutputStream();
