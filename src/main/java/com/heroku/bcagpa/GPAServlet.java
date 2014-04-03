@@ -95,9 +95,29 @@ public class GPAServlet extends HttpServlet {
 				} else {
 					credits = findCredits(mods);
 				}
-				
-				builder.append("[Credits] " + credits + "[Mods]" + mods + "[Subject]" + subject + "[Grades]" + first + "," + second + "," + third + "\n");
+				if (isGradeValid(first)) {
+					tri1.add(new Grade(subject.substring(0,10), getGPA(first.split(" ")[0]), credits));
+				}
+				if (isGradeValid(second)) {
+					tri2.add(new Grade(subject.substring(0,10), getGPA(second.split(" ")[0]), credits));
+				}
+				if (isGradeValid(third)) {
+					tri3.add(new Grade(subject.substring(0,10), getGPA(third.split(" ")[0]), credits));
+				}
+				builder.append("[Credits]" + credits + "[Mods]" + mods + "[Subject]" + subject + "[Grades]" + first + "," + second + "," + third + "\n");
 			}
+		}
+		builder.append("\n\ntri1:");
+		for (int i = 0; i < tri1.size(); i++) {
+			builder.append("\n" + tri1.get(i));
+		}
+		builder.append("\n\ntri2:");
+		for (int i = 0; i < tri2.size(); i++) {
+			builder.append("\n" + tri2.get(i));
+		}
+		builder.append("\n\ntri3:");
+		for (int i = 0; i < tri3.size(); i++) {
+			builder.append("\n" + tri3.get(i));
 		}
 		this.output = builder.toString();
 	}
@@ -161,6 +181,20 @@ public class GPAServlet extends HttpServlet {
 			return false;
 		}
 		return true;
+	}
+	
+	private double getGPA(String grade) {
+		if (grade.equals("A")) return 4.0;
+		else if (grade.equals("A-")) return 3.8;
+		else if (grade.equals("B+")) return 3.33;
+		else if (grade.equals("B")) return 3.0;
+		else if (grade.equals("B-")) return 2.8;
+		else if (grade.equals("C+")) return 2.33;
+		else if (grade.equals("C")) return 2.0;
+		else if (grade.equals("C-")) return 1.8;
+		else if (grade.equals("D+")) return 1.33;
+		else if (grade.equals("D")) return 1.0;
+		else return 0.0;
 	}
 	
 }

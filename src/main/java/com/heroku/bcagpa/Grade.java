@@ -22,5 +22,9 @@ public class Grade {
 	public double getCredits() {
 		return this.credits;
 	}
+	
+	public String toString() {
+		return "[Subject]" + subject + "[gradePoints]" + gradePoints + "[credits]" + credits;
+	}
 }
 
