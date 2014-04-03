@@ -96,13 +96,13 @@ public class GPAServlet extends HttpServlet {
 					credits = findCredits(mods);
 				}
 				if (isGradeValid(first)) {
-					tri1.add(new Grade(subject.substring(0,10), getGPA(first.split(" ")[0]), credits));
+					tri1.add(new Grade(subject, getGPA(first.split(" ")[0]), credits));
 				}
 				if (isGradeValid(second)) {
-					tri2.add(new Grade(subject.substring(0,10), getGPA(second.split(" ")[0]), credits));
+					tri2.add(new Grade(subject, getGPA(second.split(" ")[0]), credits));
 				}
 				if (isGradeValid(third)) {
-					tri3.add(new Grade(subject.substring(0,10), getGPA(third.split(" ")[0]), credits));
+					tri3.add(new Grade(subject, getGPA(third.split(" ")[0]), credits));
 				}
 				builder.append("[Credits]" + credits + "[Mods]" + mods + "[Subject]" + subject + "[Grades]" + first + "," + second + "," + third + "\n");
 			}
@@ -177,7 +177,7 @@ public class GPAServlet extends HttpServlet {
 	}
 	
 	private boolean isGradeValid(String grade) {
-		if (grade.contains("P") || grade.contains("-") || grade.contains("?")) {
+		if (grade.contains("P") || grade.contains("--") || grade.contains("?")) {
 			return false;
 		}
 		return true;
