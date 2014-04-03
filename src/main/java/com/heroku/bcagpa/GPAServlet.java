@@ -115,18 +115,16 @@ public class GPAServlet extends HttpServlet {
 				numberOfTimes += 1.0;
 			} else if (days[i].length() == 3) {
 				String day = days[i];
-				day.replaceAll("M", "01");
-				day.replaceAll("T", "02");
-				day.replaceAll("W", "03");
-				day.replaceAll("R", "04");
-				day.replaceAll("F", "05");
+				day = day.replaceAll("M", "01");
+				day = day.replaceAll("T", "02");
+				day = day.replaceAll("W", "03");
+				day = day.replaceAll("R", "04");
+				day = day.replaceAll("F", "05");
 				numberOfTimes += Double.parseDouble(day.split("-")[1]) - Double.parseDouble(day.split("-")[0]) + 1.0;
 			} else {
 				//error;
 			}
 		}
-		
-		
 		return (numberOfMods*numberOfTimes)/2.0;
 	}
 	
