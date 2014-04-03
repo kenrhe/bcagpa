@@ -103,6 +103,7 @@ public class GPAServlet extends HttpServlet {
 		
 		String modsMatch = match(modsPattern, mods);
 		String daysMatch = match(daysPattern, mods);
+		daysMatch = daysMatch.substring(1, daysMatch.length()-1);
 		
 		double modsBegin = Double.parseDouble(modsMatch.split("-")[0]);
 		double modsEnd = Double.parseDouble(modsMatch.split("-")[1]);
