@@ -72,7 +72,7 @@ public class GPAServlet extends HttpServlet {
 	
 	private void calculate() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("[Start]\n");
+		builder.append("<html>[Start]\n");
 		Element table = page.select("table").first();
 		for (int i = 0; i < table.select("tr").size(); i++) {
 			Element row = table.select("tr").get(i);
@@ -96,13 +96,13 @@ public class GPAServlet extends HttpServlet {
 					credits = findCredits(mods);
 				}
 				if (isGradeValid(first)) {
-					tri1.add(new Grade(subject.split("\\?")[0], getGPA(first.split(" ")[0]), credits));
+					tri1.add(new Grade(subject, getGPA(first.split(" ")[0]), credits));
 				}
 				if (isGradeValid(second)) {
-					tri2.add(new Grade(subject.split("\\?")[0], getGPA(second.split(" ")[0]), credits));
+					tri2.add(new Grade(subject, getGPA(second.split(" ")[0]), credits));
 				}
 				if (isGradeValid(third)) {
-					tri3.add(new Grade(subject.split("\\?")[0], getGPA(third.split(" ")[0]), credits));
+					tri3.add(new Grade(subject, getGPA(third.split(" ")[0]), credits));
 				}
 				builder.append("[Credits]" + credits + "[Mods]" + mods + "[Subject]" + subject + "[Grades]" + first + "," + second + "," + third + "\n");
 			}
@@ -119,6 +119,7 @@ public class GPAServlet extends HttpServlet {
 		for (int i = 0; i < tri3.size(); i++) {
 			builder.append("\n" + tri3.get(i));
 		}
+		builder.append("</html>");
 		this.output = builder.toString();
 	}
 	
