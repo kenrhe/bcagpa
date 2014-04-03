@@ -103,6 +103,9 @@ public class GPAServlet extends HttpServlet {
 	}
 	
 	private double findCredits(String mods) {
+		if (mods.equals("25-27(M,R)") || mods.equals("25-27(T,F)") || mods.equals("04-09(W)")) {
+			return 1.0;
+		}
 		double numberOfMods = 0.0;
 		double numberOfTimes = 0.0;
 		String modsPattern = "\\d\\d-\\d\\d";
