@@ -135,7 +135,7 @@ public class GPAServlet extends HttpServlet {
 		for (int i = 0; i < gradeList.size(); i++) {
 			Grade current = gradeList.get(i);
 			credits += current.getCredits();
-			equivalent += credits*current.getGrade();
+			equivalent += current.getCredits()*current.getGrade();
 		}
 		return equivalent/credits;
 	}
