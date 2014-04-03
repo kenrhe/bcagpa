@@ -120,7 +120,7 @@ public class GPAServlet extends HttpServlet {
 		for (int i = 0; i < tri3.size(); i++) {
 			builder.append("\n" + tri3.get(i));
 		}
-		//builder.append("</html>");
+		builder.append("</html>");
 		this.output = builder.toString();
 	}
 	
