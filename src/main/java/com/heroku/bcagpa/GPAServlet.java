@@ -129,9 +129,13 @@ public class GPAServlet extends HttpServlet {
 			builder.append("\n" + tri3.get(i));
 		}
 		//builder.append("</html>");
-		builder.append("\nTrimester 1 GPA: " + findGPA(this.tri1));
-		builder.append("\nTrimester 2 GPA: " + findGPA(this.tri2));
-		builder.append("\nTrimester 3 GPA: " + findGPA(this.tri3));
+		this.tri1GPA = findGPA(this.tri1);
+		this.tri2GPA = findGPA(this.tri2);
+		this.tri3GPA = findGPA(this.tri3);
+		builder.append("\nTrimester 1 GPA: " + tri1GPA);
+		builder.append("\nTrimester 2 GPA: " + tri2GPA);
+		builder.append("\nTrimester 3 GPA: " + tri3GPA);
+		
 		
 		this.output = builder.toString();
 	}
