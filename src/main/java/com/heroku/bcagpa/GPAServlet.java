@@ -24,6 +24,7 @@ public class GPAServlet extends HttpServlet {
 	private ArrayList<Grade> tri2 = new ArrayList<Grade>();
 	private ArrayList<Grade> tri3 = new ArrayList<Grade>();
 	private ArrayList<Grade> currentYear = new ArrayList<Grade>();
+	private double tri1GPA, tri2GPA, tri3GPA, yearGPA;
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -121,9 +122,23 @@ public class GPAServlet extends HttpServlet {
 			builder.append("\n" + tri3.get(i));
 		}
 		//builder.append("</html>");
+		builder.append("\nTrimester 1 GPA: " + findGPA(this.tri1));
+		builder.append("\nTrimester 2 GPA: " + findGPA(this.tri2));
+		builder.append("\nTrimester 3 GPA: " + findGPA(this.tri3));
+		
 		this.output = builder.toString();
 	}
 	
+	private double findGPA(ArrayList<Grade> gradeList) {
+		double credits = 0.0;
+		double equivalent = 0.0;
+		for (int i = 0; i < gradeList.size(); i++) {
+			Grade current = gradeList.get(i);
+			credits += current.getCredits();
+			equivalent += credits*current.getGrade();
+		}
+		return equivalent/credits;
+	}
 	private double findCredits(String mods) {
 		if (mods.equals("25-27(M,R)") || mods.equals("25-27(T,F)") || mods.equals("04-09(W)")) {
 			return 1.0;
