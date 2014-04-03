@@ -72,7 +72,8 @@ public class GPAServlet extends HttpServlet {
 	
 	private void calculate() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("<html>[Start]\n");
+		builder.append("<html>");
+		builder.append("[Start]\n");
 		Element table = page.select("table").first();
 		for (int i = 0; i < table.select("tr").size(); i++) {
 			Element row = table.select("tr").get(i);
@@ -119,7 +120,7 @@ public class GPAServlet extends HttpServlet {
 		for (int i = 0; i < tri3.size(); i++) {
 			builder.append("\n" + tri3.get(i));
 		}
-		builder.append("</html>");
+		//builder.append("</html>");
 		this.output = builder.toString();
 	}
 	
@@ -178,7 +179,7 @@ public class GPAServlet extends HttpServlet {
 	}
 	
 	private boolean isGradeValid(String grade) {
-		if (grade.contains("P") || grade.contains("--") || grade.contains("?")) {
+		if (grade.contains("P") || grade.contains("--") || grade.contains("\\?")) {
 			return false;
 		}
 		return true;
