@@ -32,9 +32,7 @@ public class GPAServlet extends HttpServlet {
 		if (!req.getParameter("code").equals("1234")) {
 			resp.sendRedirect("/");
 		}
-		String message = "De la Morte";
-		req.setAttribute("message", message);
-		req.getRequestDispatcher("gpa.jsp").forward(req, resp);
+
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		try {
@@ -43,19 +41,13 @@ public class GPAServlet extends HttpServlet {
 			
 		}
 		calculate();
-		
-		StringBuilder builder = new StringBuilder();
-		builder.append("Trimester 1 GPA: " + tri1GPA);
-		builder.append("\nTrimester 2 GPA: " + tri2GPA);
-		builder.append("\nTrimester 3 GPA: " + tri3GPA);
 
-		
-		ServletOutputStream out = resp.getOutputStream();
-		//out.write(page.toString().getBytes());
-		
-		//out.write(builder.toString().getBytes());
-		out.flush();
-		out.close();
+		req.setAttribute("tri1GPA", tri1GPA);
+		req.setAttribute("tri2GPA", tri2GPA);
+		req.setAttribute("tri3GPA", tri3GPA);
+		req.getRequestDispatcher("gpa.jsp").forward(req, resp);
+
+	
 	}
 	
 	private void parse(String username, String password) throws IOException {
