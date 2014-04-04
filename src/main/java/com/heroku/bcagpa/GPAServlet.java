@@ -29,6 +29,9 @@ public class GPAServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		String message = "De la Morte";
+		req.setAttribute("message", message);
+		req.getRequestDispatcher("gpa.jsp").forward(req, resp);
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		try {
@@ -47,7 +50,7 @@ public class GPAServlet extends HttpServlet {
 		ServletOutputStream out = resp.getOutputStream();
 		//out.write(page.toString().getBytes());
 		
-		out.write(builder.toString().getBytes());
+		//out.write(builder.toString().getBytes());
 		out.flush();
 		out.close();
 	}
