@@ -41,12 +41,14 @@ public class GPAServlet extends HttpServlet {
 			
 		}
 		calculate();
-		
+		tri1 = new ArrayList<Grade>();
+		tri2 = new ArrayList<Grade>();
+		tri3 = new ArrayList<Grade>();
+		currentYear = new ArrayList<Grade>();
 		req.setAttribute("tri1GPA", tri1GPA);
 		req.setAttribute("tri2GPA", tri2GPA);
 		req.setAttribute("tri3GPA", tri3GPA);
 		req.getRequestDispatcher("gpa.jsp").forward(req, resp);
-		
 
 	
 	}
