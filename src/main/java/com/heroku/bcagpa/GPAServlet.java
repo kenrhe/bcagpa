@@ -41,11 +41,17 @@ public class GPAServlet extends HttpServlet {
 			
 		}
 		calculate();
-
+		/*
 		req.setAttribute("tri1GPA", tri1GPA);
 		req.setAttribute("tri2GPA", tri2GPA);
 		req.setAttribute("tri3GPA", tri3GPA);
 		req.getRequestDispatcher("gpa.jsp").forward(req, resp);
+		*/
+        ServletOutputStream out = resp.getOutputStream();
+        String test = tri1GPA + " " + tri2GPA + " " + tri3GPA;
+        out.write(test.getBytes());
+        out.flush();
+        out.close();
 
 	
 	}
