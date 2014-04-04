@@ -9,8 +9,8 @@
 <body>
 	<p>You do not have the permissions to access this page.</p>
     <form name="login" action="/gpa" method="POST">
-    	Username: <input type="text" name="username"><br>
-    	Password: <input type="password" name="password">
+    	Username: <input type="text" placeholder="username" name="username"><br>
+    	Password: <input type="password" placeholder="password" name="password">
     	<input type="submit" value="Login">
 	</form>
 
