@@ -37,9 +37,9 @@
 <fieldset>
 
     <form name="login" action="/gpa" method="POST">
-    	<input type="text" placeholder="PowerSchool Username" name="username"><br>
-    	<input type="password" placeholder="PowerSchool Password" name="password"><br>
-    	<input type_"text" placeholder="Developer Access Code" name="code"> <br>
+    	<input type="text" size=“25” placeholder="PowerSchool Username" name="username"><br>
+    	<input type="password" size=“25” placeholder="PowerSchool Password" name="password"><br>
+    	<input type_"text" size=“25” placeholder="Developer Access Code" name="code"> <br>
     	<input type="submit" value="Login">
 </fieldset>
 	</form>
