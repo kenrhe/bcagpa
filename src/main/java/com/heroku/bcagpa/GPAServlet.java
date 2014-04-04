@@ -29,6 +29,9 @@ public class GPAServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		if (!req.getParameter("code").equals("1234")) {
+			resp.sendRedirect("/");
+		}
 		String message = "De la Morte";
 		req.setAttribute("message", message);
 		req.getRequestDispatcher("gpa.jsp").forward(req, resp);

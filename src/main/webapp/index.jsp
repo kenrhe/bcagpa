@@ -9,8 +9,9 @@
 <body>
 	<p>You do not have the permissions to access this page.</p>
     <form name="login" action="/gpa" method="POST">
-    	Username: <input type="text" placeholder="username" name="username"><br>
-    	Password: <input type="password" placeholder="password" name="password">
+    	<input type="text" placeholder="PowerSchool Username" name="username"><br>
+    	<input type="password" placeholder="PowerSchool Password" name="password"><br>
+    	<input type_"text" placeholder="Developer Access Code" name="code">
     	<input type="submit" value="Login">
 	</form>
 
