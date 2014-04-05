@@ -29,11 +29,11 @@ public class GPAServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		tri1 = new ArrayList<Grade>();
+		tri2 = new ArrayList<Grade>();
+		tri3 = new ArrayList<Grade>();
+		currentYear = new ArrayList<Grade>();
 		try {
-			tri1 = new ArrayList<Grade>();
-			tri2 = new ArrayList<Grade>();
-			tri3 = new ArrayList<Grade>();
-			currentYear = new ArrayList<Grade>();
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
 			parse(username, password);
