@@ -44,6 +44,7 @@ public class GPAServlet extends HttpServlet {
 			req.setAttribute("tri1GPA", round(tri1GPA, 3));
 			req.setAttribute("tri2GPA", round(tri2GPA, 3));
 			req.setAttribute("tri3GPA", round(tri3GPA, 3));
+			req.setAttribute("yearGPA", round(findYearGPA(), 3));
 			req.getRequestDispatcher("gpa.jsp").forward(req, resp);
 		} catch (Exception e) {
 			req.setAttribute("error", "Error: Please check your username and password.");
@@ -152,6 +153,28 @@ public class GPAServlet extends HttpServlet {
 			equivalent += current.getCredits() * current.getGrade();
 		}
 		return equivalent / credits;
+	}
+	
+	private double findYearGPA() {
+		double credits = 0.0;
+		double equivalent = 0.0;
+		for (int i = 0; i < tri1.size(); i++) {
+			Grade current = tri1.get(i);
+			credits += current.getCredits();
+			equivalent += current.getCredits() * current.getGrade();
+		}
+		for (int i = 0; i < tri2.size(); i++) {
+			Grade current = tri2.get(i);
+			credits += current.getCredits();
+			equivalent += current.getCredits() * current.getGrade();
+		}
+		for (int i = 0; i < tri3.size(); i++) {
+			Grade current = tri3.get(i);
+			credits += current.getCredits();
+			equivalent += current.getCredits() * current.getGrade();
+		}
+		
+		return equivalent/credits;
 	}
 
 	private double findCredits(String mods) {
