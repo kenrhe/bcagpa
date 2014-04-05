@@ -30,19 +30,21 @@ public class GPAServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		try {
-			String username = req.getParameter("username");
-			String password = req.getParameter("password");
-			parse(username, password);
-			calculate();
 			tri1 = new ArrayList<Grade>();
 			tri2 = new ArrayList<Grade>();
 			tri3 = new ArrayList<Grade>();
 			currentYear = new ArrayList<Grade>();
+			String username = req.getParameter("username");
+			String password = req.getParameter("password");
+			parse(username, password);
+			calculate();
+
 			req.setAttribute("tri1GPA", tri1GPA);
 			req.setAttribute("tri2GPA", tri2GPA);
 			req.setAttribute("tri3GPA", tri3GPA);
 			req.getRequestDispatcher("gpa.jsp").forward(req, resp);
 		} catch (Exception e) {
+			resp.sendRedirect("/");
 		}
 	}
 
