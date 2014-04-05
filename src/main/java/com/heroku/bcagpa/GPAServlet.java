@@ -8,7 +8,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,8 +24,7 @@ public class GPAServlet extends HttpServlet {
 	private ArrayList<Grade> tri1 = new ArrayList<Grade>();
 	private ArrayList<Grade> tri2 = new ArrayList<Grade>();
 	private ArrayList<Grade> tri3 = new ArrayList<Grade>();
-	private ArrayList<Grade> currentYear = new ArrayList<Grade>();
-	private double tri1GPA, tri2GPA, tri3GPA, yearGPA;
+	private double tri1GPA, tri2GPA, tri3GPA;
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -34,7 +32,6 @@ public class GPAServlet extends HttpServlet {
 		tri1 = new ArrayList<Grade>();
 		tri2 = new ArrayList<Grade>();
 		tri3 = new ArrayList<Grade>();
-		currentYear = new ArrayList<Grade>();
 		try {
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
