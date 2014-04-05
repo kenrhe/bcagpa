@@ -28,7 +28,7 @@
 <body>
 <div id="header">
 <center>
-<h1><a href="/">BCA GPA Calculator</a></h1>
+<h1>BCA GPA Calculator</h1>
 </center>
 </div>
 <div id="content">
