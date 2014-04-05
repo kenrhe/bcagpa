@@ -33,7 +33,7 @@
 </center>
 </div>
 <div id="content">
-<p><a href="/">> Back</a></p>
+&nbsp;&nbsp;<p><a href="/">> Back</a></p>
 <center>
 <br><br><br><br><br><br>
 <fieldset>
