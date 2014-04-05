@@ -1,6 +1,8 @@
 package com.heroku.bcagpa;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -39,9 +41,9 @@ public class GPAServlet extends HttpServlet {
 			parse(username, password);
 			calculate();
 
-			req.setAttribute("tri1GPA", tri1GPA);
-			req.setAttribute("tri2GPA", tri2GPA);
-			req.setAttribute("tri3GPA", tri3GPA);
+			req.setAttribute("tri1GPA", round(tri1GPA, 3));
+			req.setAttribute("tri2GPA", round(tri2GPA, 3));
+			req.setAttribute("tri3GPA", round(tri3GPA, 3));
 			req.getRequestDispatcher("gpa.jsp").forward(req, resp);
 		} catch (Exception e) {
 			req.setAttribute("error", "Error: Please check your username and password.");
@@ -237,6 +239,14 @@ public class GPAServlet extends HttpServlet {
 			return 1.0;
 		else
 			return 0.0;
+	}
+	
+	private double round(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
+
+	    BigDecimal bd = new BigDecimal(value);
+	    bd = bd.setScale(places, RoundingMode.HALF_UP);
+	    return bd.doubleValue();
 	}
 
 }
