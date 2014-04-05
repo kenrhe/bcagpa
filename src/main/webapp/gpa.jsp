@@ -23,7 +23,15 @@
     	background:#EEEEEE;
 	
 	}
-	
+	#grade {
+		font-family:verdana;
+		background:white;
+		float:left;
+		width:33%;
+		margin:0.05%;
+		border:1px solid gray;
+		display:block;
+	}
 </style>
 </head>
 <body>
@@ -34,15 +42,20 @@
 </div>
 <div id="content">
 <p>&nbsp;&nbsp;<a href="/">> Logout</a></p>
-<center>
 <br><br><br><br>
 <fieldset>
-<p><b>Trimester 1 GPA:</b> ${tri1GPA}</p>
-<p><b>Trimester 2 GPA:</b> ${tri2GPA}</p>
-<p><b>Trimester 3 GPA:</b> ${tri3GPA}</p>
+<div id="grade" style="text-align: center">
+	<b>Trimester 1 GPA</b> <br>${tri1GPA}
+</div>
+<div id="grade" style="text-align: center">
+	<b>Trimester 2 GPA</b> <br>${tri2GPA}
+</div>
+<div id="grade" style="text-align: center">
+	<b>Trimester 3 GPA</b> <br>${tri3GPA}
+</div>
+
 </fieldset>
 	</form>
-</center>
 </div>
 <div id="footer">
 <center>
