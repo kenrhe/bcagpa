@@ -39,7 +39,6 @@
     <form name="login" action="/gpa" method="POST">
     	<input type="text" size=“25” placeholder="PS Username" name="username"><br>
     	<input type="password" size=“25” placeholder="PS Password" name="password"><br>
-    	<input type_"text" size=“25” placeholder="Developer Access Code" name="code"> <br>
     	<input type="submit" value="Login">
 </fieldset>
 	</form>

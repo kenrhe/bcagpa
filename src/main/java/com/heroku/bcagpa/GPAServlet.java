@@ -25,34 +25,27 @@ public class GPAServlet extends HttpServlet {
 	private ArrayList<Grade> tri3 = new ArrayList<Grade>();
 	private ArrayList<Grade> currentYear = new ArrayList<Grade>();
 	private double tri1GPA, tri2GPA, tri3GPA, yearGPA;
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		if (!req.getParameter("code").equals("1234")) {
-			resp.sendRedirect("/");
-		}
-
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
 		try {
+			String username = req.getParameter("username");
+			String password = req.getParameter("password");
 			parse(username, password);
-		} catch (IOException ioe) {
-			
+			calculate();
+			tri1 = new ArrayList<Grade>();
+			tri2 = new ArrayList<Grade>();
+			tri3 = new ArrayList<Grade>();
+			currentYear = new ArrayList<Grade>();
+			req.setAttribute("tri1GPA", tri1GPA);
+			req.setAttribute("tri2GPA", tri2GPA);
+			req.setAttribute("tri3GPA", tri3GPA);
+			req.getRequestDispatcher("gpa.jsp").forward(req, resp);
+		} catch (Exception e) {
 		}
-		calculate();
-		tri1 = new ArrayList<Grade>();
-		tri2 = new ArrayList<Grade>();
-		tri3 = new ArrayList<Grade>();
-		currentYear = new ArrayList<Grade>();
-		req.setAttribute("tri1GPA", tri1GPA);
-		req.setAttribute("tri2GPA", tri2GPA);
-		req.setAttribute("tri3GPA", tri3GPA);
-		req.getRequestDispatcher("gpa.jsp").forward(req, resp);
-
-	
 	}
-	
+
 	private void parse(String username, String password) throws IOException {
 		String HOME_URL = "https://ps01.bergen.org/public/home.html", GRADES_URL = "https://ps01.bergen.org/guardian/home.html";
 		String serviceName = "PS+Parent+Portal", credentialType = "User+Id+and+Password+Credential", pcasServerUrl = "/";
@@ -78,10 +71,10 @@ public class GPAServlet extends HttpServlet {
 				.method(Connection.Method.POST).execute();
 		this.page = r.parse();
 	}
-	
+
 	private void calculate() {
 		StringBuilder builder = new StringBuilder();
-		//builder.append("<html>");
+		// builder.append("<html>");
 		builder.append("[Start]\n");
 		Element table = page.select("table").first();
 		for (int i = 0; i < table.select("tr").size(); i++) {
@@ -106,15 +99,20 @@ public class GPAServlet extends HttpServlet {
 					credits = findCredits(mods);
 				}
 				if (isGradeValid(first)) {
-					tri1.add(new Grade(subject.split("\u00a0")[0], getGPA(first.split(" ")[0]), credits));
+					tri1.add(new Grade(subject.split("\u00a0")[0], getGPA(first
+							.split(" ")[0]), credits));
 				}
 				if (isGradeValid(second)) {
-					tri2.add(new Grade(subject.split("\u00a0")[0], getGPA(second.split(" ")[0]), credits));
+					tri2.add(new Grade(subject.split("\u00a0")[0],
+							getGPA(second.split(" ")[0]), credits));
 				}
 				if (isGradeValid(third)) {
-					tri3.add(new Grade(subject.split("\u00a0")[0], getGPA(third.split(" ")[0]), credits));
+					tri3.add(new Grade(subject.split("\u00a0")[0], getGPA(third
+							.split(" ")[0]), credits));
 				}
-				builder.append("[Credits]" + credits + "[Mods]" + mods + "[Subject]" + subject + "[Grades]" + first + "," + second + "," + third + "\n");
+				builder.append("[Credits]" + credits + "[Mods]" + mods
+						+ "[Subject]" + subject + "[Grades]" + first + ","
+						+ second + "," + third + "\n");
 			}
 		}
 		builder.append("\n\ntri1:");
@@ -129,54 +127,53 @@ public class GPAServlet extends HttpServlet {
 		for (int i = 0; i < tri3.size(); i++) {
 			builder.append("\n" + tri3.get(i));
 		}
-		//builder.append("</html>");
+		// builder.append("</html>");
 		this.tri1GPA = findGPA(this.tri1);
 		this.tri2GPA = findGPA(this.tri2);
 		this.tri3GPA = findGPA(this.tri3);
 		builder.append("\nTrimester 1 GPA: " + tri1GPA);
 		builder.append("\nTrimester 2 GPA: " + tri2GPA);
 		builder.append("\nTrimester 3 GPA: " + tri3GPA);
-		
-		
+
 		this.output = builder.toString();
 	}
-	
+
 	private double findGPA(ArrayList<Grade> gradeList) {
 		double credits = 0.0;
 		double equivalent = 0.0;
 		for (int i = 0; i < gradeList.size(); i++) {
 			Grade current = gradeList.get(i);
 			credits += current.getCredits();
-			equivalent += current.getCredits()*current.getGrade();
+			equivalent += current.getCredits() * current.getGrade();
 		}
-		return equivalent/credits;
+		return equivalent / credits;
 	}
+
 	private double findCredits(String mods) {
-		if (mods.equals("25-27(M,R)") || mods.equals("25-27(T,F)") || mods.equals("04-09(W)")) {
+		if (mods.equals("25-27(M,R)") || mods.equals("25-27(T,F)")
+				|| mods.equals("04-09(W)")) {
 			return 1.0;
 		}
 		double numberOfMods = 0.0;
 		double numberOfTimes = 0.0;
 		String modsPattern = "\\d\\d-\\d\\d";
 		String daysPattern = "\\((.*)\\)";
-		
+
 		String modsMatch = match(modsPattern, mods);
 		if (modsMatch.equals("ERROR")) {
 			modsMatch = "10";
 		}
 		String daysMatch = match(daysPattern, mods);
-		daysMatch = daysMatch.substring(1, daysMatch.length()-1);
+		daysMatch = daysMatch.substring(1, daysMatch.length() - 1);
 		if (modsMatch.length() == 2) {
 			numberOfMods = 1;
 		} else {
 			double modsBegin = Double.parseDouble(modsMatch.split("-")[0]);
 			double modsEnd = Double.parseDouble(modsMatch.split("-")[1]);
-			
-			numberOfMods = (modsEnd-modsBegin)+1.0;
-		}
-		
 
-		
+			numberOfMods = (modsEnd - modsBegin) + 1.0;
+		}
+
 		String[] days = daysMatch.split(",");
 		for (int i = 0; i < days.length; i++) {
 			if (days[i].length() == 1) {
@@ -188,14 +185,15 @@ public class GPAServlet extends HttpServlet {
 				day = day.replaceAll("W", "03");
 				day = day.replaceAll("R", "04");
 				day = day.replaceAll("F", "05");
-				numberOfTimes += Double.parseDouble(day.split("-")[1]) - Double.parseDouble(day.split("-")[0]) + 1.0;
+				numberOfTimes += Double.parseDouble(day.split("-")[1])
+						- Double.parseDouble(day.split("-")[0]) + 1.0;
 			} else {
-				//error;
+				// error;
 			}
 		}
-		return (numberOfMods*numberOfTimes)/2.0;
+		return (numberOfMods * numberOfTimes) / 2.0;
 	}
-	
+
 	private String match(String pattern, String line) {
 		Pattern p = Pattern.compile(pattern);
 		Matcher matcher = p.matcher(line);
@@ -204,26 +202,38 @@ public class GPAServlet extends HttpServlet {
 		}
 		return "ERROR";
 	}
-	
+
 	private boolean isGradeValid(String grade) {
-		if (grade.contains("P") || grade.contains("--") || grade.contains("\u00a0")) {
+		if (grade.contains("P") || grade.contains("--")
+				|| grade.contains("\u00a0")) {
 			return false;
 		}
 		return true;
 	}
-	
+
 	private double getGPA(String grade) {
-		if (grade.equals("A")) return 4.0;
-		else if (grade.equals("A-")) return 3.8;
-		else if (grade.equals("B+")) return 3.33;
-		else if (grade.equals("B")) return 3.0;
-		else if (grade.equals("B-")) return 2.8;
-		else if (grade.equals("C+")) return 2.33;
-		else if (grade.equals("C")) return 2.0;
-		else if (grade.equals("C-")) return 1.8;
-		else if (grade.equals("D+")) return 1.33;
-		else if (grade.equals("D")) return 1.0;
-		else return 0.0;
+		if (grade.equals("A"))
+			return 4.0;
+		else if (grade.equals("A-"))
+			return 3.8;
+		else if (grade.equals("B+"))
+			return 3.33;
+		else if (grade.equals("B"))
+			return 3.0;
+		else if (grade.equals("B-"))
+			return 2.8;
+		else if (grade.equals("C+"))
+			return 2.33;
+		else if (grade.equals("C"))
+			return 2.0;
+		else if (grade.equals("C-"))
+			return 1.8;
+		else if (grade.equals("D+"))
+			return 1.33;
+		else if (grade.equals("D"))
+			return 1.0;
+		else
+			return 0.0;
 	}
-	
+
 }
