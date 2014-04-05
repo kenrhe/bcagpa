@@ -33,9 +33,9 @@
 </center>
 </div>
 <div id="content">
-<p>&nbsp;&nbsp;<a href="/">> Back</a></p>
+<p>&nbsp;&nbsp;<a href="/">> Logout</a></p>
 <center>
-<br><br><br><br><br><br>
+<br><br><br><br>
 <fieldset>
 <p><b>Trimester 1 GPA:</b> ${tri1GPA}</p>
 <p><b>Trimester 2 GPA:</b> ${tri2GPA}</p>
