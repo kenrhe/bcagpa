@@ -23,6 +23,7 @@
     	background:#EEEEEE;
 	
 	}
+	
 </style>
 </head>
 <body>
@@ -35,9 +36,9 @@
 <center>
 <br><br><br><br><br><br>
 <fieldset>
-<p>Trimester 1 GPA: ${tri1GPA}</p>
-<p>Trimester 2 GPA: ${tri2GPA}</p>
-<p>Trimester 3 GPA: ${tri3GPA}</p>
+<p><b>Trimester 1 GPA:</b> ${tri1GPA}</p>
+<p><b>Trimester 2 GPA:</b> ${tri2GPA}</p>
+<p><b>Trimester 3 GPA:</b> ${tri3GPA}</p>
 </fieldset>
 	</form>
 </center>

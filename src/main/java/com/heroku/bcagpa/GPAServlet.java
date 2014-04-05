@@ -44,7 +44,8 @@ public class GPAServlet extends HttpServlet {
 			req.setAttribute("tri3GPA", tri3GPA);
 			req.getRequestDispatcher("gpa.jsp").forward(req, resp);
 		} catch (Exception e) {
-			resp.sendRedirect("/");
+			req.setAttribute("error", "Error: Please check your username and password.");
+			req.getRequestDispatcher("index.jsp").forward(req,resp);
 		}
 	}
 

@@ -34,6 +34,7 @@
 <div id="content">
 <center>
 <br><br><br><br><br><br>
+<center>${error}</center>
 <fieldset>
 
     <form name="login" action="/gpa" method="POST">
