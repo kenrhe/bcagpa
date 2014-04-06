@@ -27,9 +27,18 @@
 		font-family:verdana;
 		background:white;
 		float:left;
-		width:24.8%;
+		width:33%;
 		border:1px solid gray;
 		display:block;
+	}
+	#yearGPA {
+		font-family:verdana;
+		background:white;
+		display:block;
+		margin: 0 auto;
+		width:20%;
+		margin-top:1%;
+		border: 1px solid gray;
 	}
 </style>
 </head>
@@ -53,10 +62,11 @@
 	<b>Trimester 3 GPA</b> <br>${tri3GPA}
 </div>
 
-<div id="grade" style="text-align: center">
+
+</fieldset>
+<div id="yearGPA" style="text-align: center">
 	<b>Year GPA</b> <br>${yearGPA}
 </div>
-</fieldset>
 	</form>
 </div>
 <div id="footer">
