@@ -26,6 +26,11 @@ public class GPAServlet extends HttpServlet {
 	private ArrayList<Grade> tri3 = new ArrayList<Grade>();
 	private double tri1GPA, tri2GPA, tri3GPA;
 
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		resp.sendRedirect("/");
+	}
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
