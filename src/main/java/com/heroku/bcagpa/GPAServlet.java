@@ -42,6 +42,7 @@ public class GPAServlet extends HttpServlet {
 			req.setAttribute("tri1GPA", round(tri1GPA, 3));
 			req.setAttribute("tri2GPA", round(tri2GPA, 3));
 			req.setAttribute("tri3GPA", round(tri3GPA, 3));
+			req.setAttribute("debug1", debug);
 			req.setAttribute("yearGPA", round(findYearGPA(), 3));
 			debug = false;
 			req.setAttribute("debug", debug);
