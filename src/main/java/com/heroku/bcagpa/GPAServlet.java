@@ -25,6 +25,7 @@ public class GPAServlet extends HttpServlet {
 	private ArrayList<Grade> tri2 = new ArrayList<Grade>();
 	private ArrayList<Grade> tri3 = new ArrayList<Grade>();
 	private double tri1GPA, tri2GPA, tri3GPA;
+	private boolean debug = true;
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -42,6 +43,8 @@ public class GPAServlet extends HttpServlet {
 			req.setAttribute("tri2GPA", round(tri2GPA, 3));
 			req.setAttribute("tri3GPA", round(tri3GPA, 3));
 			req.setAttribute("yearGPA", round(findYearGPA(), 3));
+			debug = false;
+			req.setAttribute("debug", debug);
 			req.getRequestDispatcher("gpa.jsp").forward(req, resp);
 		} catch (Exception e) {
 			req.setAttribute("error", "Error: Please check your username and password.");
