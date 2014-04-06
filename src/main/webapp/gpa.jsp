@@ -61,8 +61,6 @@
 <div id="grade" style="text-align: center">
 	<b>Trimester 3 GPA</b> <br>${tri3GPA}
 </div>
-${debug1}
-${debug}
 </fieldset>
 <div id="yearGPA" style="text-align: center">
 	<b>Year GPA</b> <br>${yearGPA}
