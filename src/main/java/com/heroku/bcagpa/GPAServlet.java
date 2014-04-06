@@ -34,7 +34,6 @@ public class GPAServlet extends HttpServlet {
 		tri2 = new ArrayList<Grade>();
 		tri3 = new ArrayList<Grade>();
 		try {
-			Users.Connect();
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
 			parse(username, password);
