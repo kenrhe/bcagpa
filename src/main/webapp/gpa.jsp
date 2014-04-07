@@ -40,28 +40,9 @@
 		margin-top:1%;
 		border: 1px solid gray;
 	}
-	.loader {
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background: url('page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
-	}
 </style>
-
 </head>
 <body>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript">
-$(window).load(function() {
-	$(".loader").fadeOut(1000);
-})
-
-</script>
-<div class="loader"></div>
 <div id="header">
 <center>
 <h1>BCA GPA Calculator</h1>
@@ -80,8 +61,6 @@ $(window).load(function() {
 <div id="grade" style="text-align: center">
 	<b>Trimester 3 GPA</b> <br>${tri3GPA}
 </div>
-
-
 </fieldset>
 <div id="yearGPA" style="text-align: center">
 	<b>Year GPA</b> <br>${yearGPA}
