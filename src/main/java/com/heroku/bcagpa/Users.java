@@ -1,12 +1,19 @@
 package com.heroku.bcagpa;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Users {
-	public static void Connect() throws Exception {
-		Connection c = null;
-		Class.forName("org.postgre.Driver");
-		c = DriverManager.getConnection("jdbc:postgresql://ec2-54-225-101-4.compute-1.amazonaws.com:5432/daepv9eslp2f6n", "ufurjjnyaoogst", "JuF24BEoj43syFdrNMp-DOkRQ6");
+	public static Connection getConnection() throws URISyntaxException, SQLException {
+	    URI dbUri = new URI(System.getenv("DATABASE_URL"));
+
+	    String username = dbUri.getUserInfo().split(":")[0];
+	    String password = dbUri.getUserInfo().split(":")[1];
+	    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+
+	    return DriverManager.getConnection(dbUrl, username, password);
 	}
 }
