@@ -21,7 +21,7 @@
     	top:80px;
     	bottom:50px;
     	background:#EEEEEE;
-	
+		font-family:verdana;
 	}
 	#grade {
 		font-family:verdana;
