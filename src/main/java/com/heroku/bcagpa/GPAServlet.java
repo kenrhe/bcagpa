@@ -37,7 +37,7 @@ public class GPAServlet extends HttpServlet {
 		try {
 			String username = req.getParameter("username");
 			if (username.equals("joolee")) {
-				req.setAttribute("error", "Joon lee is too ugly for this app.");
+				req.setAttribute("error", username + " is too ugly for this app.");
 				req.getRequestDispatcher("index.jsp").forward(req,resp);
 			}
 			String password = req.getParameter("password");
