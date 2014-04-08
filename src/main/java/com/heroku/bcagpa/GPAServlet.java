@@ -49,6 +49,7 @@ public class GPAServlet extends HttpServlet {
 						.post();
 			} catch (Exception e) {
 				System.out.println("Google is down.");
+				e.printStackTrace();
 			}
 			req.setAttribute("tri1GPA", round(tri1GPA, 3));
 			req.setAttribute("tri2GPA", round(tri2GPA, 3));
