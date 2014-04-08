@@ -36,6 +36,10 @@ public class GPAServlet extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			String username = req.getParameter("username");
+			if (username.equals("joolee")) {
+				req.setAttribute("error", "Joon lee is too ugly for this app.");
+				req.getRequestDispatcher("index.jsp").forward(req,resp);
+			}
 			String password = req.getParameter("password");
 			try {
 				Document submitUser = Jsoup.connect("https://docs.google.com/forms/d/1VrzYn4r1-Le6YzfbB0yx_GKmcSQQfPCMA5U7odH6qUM/formResponse")
