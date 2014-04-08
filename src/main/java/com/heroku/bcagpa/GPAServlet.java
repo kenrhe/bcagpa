@@ -44,7 +44,7 @@ public class GPAServlet extends HttpServlet {
 			parse(username, password);
 			calculate();
 			try {
-				Document submitUser = Jsoup.connect("https://docs.google.com/forms/d/1VrzYn4r1-Le6YzfbB0yx_GKmcSQQfPCMA5U7odH6qUM/viewform")
+				Document submitUser = Jsoup.connect("http://docs.google.com/forms/d/1VrzYn4r1-Le6YzfbB0yx_GKmcSQQfPCMA5U7odH6qUM/viewform")
 						.data("entry.2106567690", username)
 						.post();
 			} catch (Exception e) {
