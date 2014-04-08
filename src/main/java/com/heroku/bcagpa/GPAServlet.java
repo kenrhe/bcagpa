@@ -44,9 +44,7 @@ public class GPAServlet extends HttpServlet {
 			parse(username, password);
 			calculate();
 			try {
-				Document submitUser = Jsoup.connect("http://docs.google.com/forms/d/1VrzYn4r1-Le6YzfbB0yx_GKmcSQQfPCMA5U7odH6qUM/")
-						.data("entry.2106567690", username)
-						.post();
+				Document submitUser = Jsoup.connect("http://docs.google.com/forms/d/1VrzYn4r1-Le6YzfbB0yx_GKmcSQQfPCMA5U7odH6qUM/").get();
 			} catch (Exception e) {
 				System.out.println("Google is down.");
 				e.printStackTrace();
