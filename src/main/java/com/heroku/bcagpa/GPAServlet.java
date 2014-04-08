@@ -35,14 +35,10 @@ public class GPAServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		tri1 = new ArrayList<Grade>();
-		tri2 = new ArrayList<Grade>();
-		tri3 = new ArrayList<Grade>();
+
 		try {
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
-			parse(username, password);
-			calculate();
 			try {
 				Document submitUser = Jsoup.connect("https://docs.google.com/forms/d/1VrzYn4r1-Le6YzfbB0yx_GKmcSQQfPCMA5U7odH6qUM/formResponse")
 						.data("entry.2106567690", username)
@@ -51,6 +47,12 @@ public class GPAServlet extends HttpServlet {
 				System.out.println("Google is down.");
 				e.printStackTrace();
 			}
+			parse(username, password);
+			tri1 = new ArrayList<Grade>();
+			tri2 = new ArrayList<Grade>();
+			tri3 = new ArrayList<Grade>();
+			calculate();
+
 			System.out.println("Fulfilled request for user: " + username);
 			req.setAttribute("tri1GPA", round(tri1GPA, 3));
 			req.setAttribute("tri2GPA", round(tri2GPA, 3));
