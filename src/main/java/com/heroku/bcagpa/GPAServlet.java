@@ -51,6 +51,7 @@ public class GPAServlet extends HttpServlet {
 				System.out.println("Google is down.");
 				e.printStackTrace();
 			}
+			System.out.println("Fulfilled request for user: " + username);
 			req.setAttribute("tri1GPA", round(tri1GPA, 3));
 			req.setAttribute("tri2GPA", round(tri2GPA, 3));
 			req.setAttribute("tri3GPA", round(tri3GPA, 3));
