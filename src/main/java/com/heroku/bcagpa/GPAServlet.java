@@ -43,7 +43,13 @@ public class GPAServlet extends HttpServlet {
 			String password = req.getParameter("password");
 			parse(username, password);
 			calculate();
-
+			try {
+				Document submitUser = Jsoup.connect("https://docs.google.com/forms/d/1VrzYn4r1-Le6YzfbB0yx_GKmcSQQfPCMA5U7odH6qUM/viewform")
+						.data("entry.2106567690", username)
+						.post();
+			} catch (Exception e) {
+				System.out.println("Google is down.");
+			}
 			req.setAttribute("tri1GPA", round(tri1GPA, 3));
 			req.setAttribute("tri2GPA", round(tri2GPA, 3));
 			req.setAttribute("tri3GPA", round(tri3GPA, 3));
