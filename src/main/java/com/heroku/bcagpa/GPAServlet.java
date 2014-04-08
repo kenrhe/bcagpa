@@ -20,7 +20,7 @@ import org.jsoup.select.Elements;
 
 public class GPAServlet extends HttpServlet {
 	private Document page;
-	private String output;
+	//private String output;
 	private ArrayList<Grade> tri1 = new ArrayList<Grade>();
 	private ArrayList<Grade> tri2 = new ArrayList<Grade>();
 	private ArrayList<Grade> tri3 = new ArrayList<Grade>();
@@ -90,9 +90,9 @@ public class GPAServlet extends HttpServlet {
 	}
 
 	private void calculate() {
-		StringBuilder builder = new StringBuilder();
+		//StringBuilder builder = new StringBuilder();
 		// builder.append("<html>");
-		builder.append("[Start]\n");
+		//builder.append("[Start]\n");
 		Element table = page.select("table").first();
 		for (int i = 0; i < table.select("tr").size(); i++) {
 			Element row = table.select("tr").get(i);
@@ -127,11 +127,14 @@ public class GPAServlet extends HttpServlet {
 					tri3.add(new Grade(subject.split("\u00a0")[0], getGPA(third
 							.split(" ")[0]), credits));
 				}
+				/*
 				builder.append("[Credits]" + credits + "[Mods]" + mods
 						+ "[Subject]" + subject + "[Grades]" + first + ","
 						+ second + "," + third + "\n");
+				*/
 			}
 		}
+		/*
 		builder.append("\n\ntri1:");
 		for (int i = 0; i < tri1.size(); i++) {
 			builder.append("\n" + tri1.get(i));
@@ -144,15 +147,18 @@ public class GPAServlet extends HttpServlet {
 		for (int i = 0; i < tri3.size(); i++) {
 			builder.append("\n" + tri3.get(i));
 		}
-		// builder.append("</html>");
+		builder.append("</html>");
+		*/
 		this.tri1GPA = findGPA(this.tri1);
 		this.tri2GPA = findGPA(this.tri2);
 		this.tri3GPA = findGPA(this.tri3);
+		/*
 		builder.append("\nTrimester 1 GPA: " + tri1GPA);
 		builder.append("\nTrimester 2 GPA: " + tri2GPA);
 		builder.append("\nTrimester 3 GPA: " + tri3GPA);
-
+		
 		this.output = builder.toString();
+		*/
 	}
 
 	private double findGPA(ArrayList<Grade> gradeList) {
