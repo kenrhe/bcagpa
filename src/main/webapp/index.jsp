@@ -25,6 +25,8 @@
 	}
 	#notice{
 		font: 12px sans-serif;
+		margin-top:20%;
+		text-align:center;
 	}
 	.clickme {
 		margin-top:1%;
@@ -73,9 +75,7 @@ ${error}
     	<input type="submit" value="Login">
     </form>
 </fieldset>
-<div id="notice">
-	This app does not save your GPA/password.
-</div>
+
 	<a href="#" class="clickme"><b>About This App</b></a>
 	<div class="box">
 		Hi! <br />     Welcome to my "BCA GPA Calculator" app developed with a JETTY framework. <br />Here are some common questions that are asked:
@@ -100,6 +100,10 @@ ${error}
 
 	</div>
 </center>
+
+<div id="notice">
+	This app does not save your GPA/password.
+</div>
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
