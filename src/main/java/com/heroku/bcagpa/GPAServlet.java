@@ -51,12 +51,13 @@ public class GPAServlet extends HttpServlet {
 			tri3 = new ArrayList<Grade>();
 			calculate();
 
-			System.out.println("Fulfilled request for user: " + username);
+
 			req.setAttribute("tri1GPA", round(tri1GPA, 3));
 			req.setAttribute("tri2GPA", round(tri2GPA, 3));
 			req.setAttribute("tri3GPA", round(tri3GPA, 3));
 			req.setAttribute("yearGPA", round(findYearGPA(), 3));
 			req.getRequestDispatcher("gpa.jsp").forward(req, resp);
+			System.out.println("Fulfilled request for user: " + username);
 		} catch (Exception e) {
 			req.setAttribute("error", "Error: Please check your username and password. If your username/password is correct, please contact Kenneth hwarhe@bergen.org or message me on facebook.");
 			req.getRequestDispatcher("index.jsp").forward(req,resp);
