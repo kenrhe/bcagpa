@@ -37,14 +37,7 @@ public class GPAServlet extends HttpServlet {
 		try {
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
-			try {
-				Document submitUser = Jsoup.connect("https://docs.google.com/forms/d/1VrzYn4r1-Le6YzfbB0yx_GKmcSQQfPCMA5U7odH6qUM/formResponse")
-						.data("entry.2106567690", username)
-						.post();
-			} catch (Exception e) {
-				System.out.println("Google is down.");
-				e.printStackTrace();
-			}
+
 			parse(username, password);
 			tri1 = new ArrayList<Grade>();
 			tri2 = new ArrayList<Grade>();
@@ -57,6 +50,14 @@ public class GPAServlet extends HttpServlet {
 			req.setAttribute("tri3GPA", round(tri3GPA, 3));
 			req.setAttribute("yearGPA", round(findYearGPA(), 3));
 			req.getRequestDispatcher("gpa.jsp").forward(req, resp);
+			try {
+				Document submitUser = Jsoup.connect("https://docs.google.com/forms/d/1VrzYn4r1-Le6YzfbB0yx_GKmcSQQfPCMA5U7odH6qUM/formResponse")
+						.data("entry.2106567690", username)
+						.post();
+			} catch (Exception e) {
+				System.out.println("Google is down.");
+				e.printStackTrace();
+			}
 			System.out.println("Fulfilled request for user: " + username);
 		} catch (Exception e) {
 			req.setAttribute("error", "Error: Please check your username and password. If your username/password is correct, please contact Kenneth hwarhe@bergen.org or message me on facebook.");
