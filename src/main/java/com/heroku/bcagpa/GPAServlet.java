@@ -60,7 +60,7 @@ public class GPAServlet extends HttpServlet {
 			}
 			System.out.println("Fulfilled request for user: " + username);
 		} catch (Exception e) {
-			req.setAttribute("error", "Error: Please check your username and password. If your username/password is correct, please contact Kenneth hwarhe@bergen.org or message me on facebook.");
+			req.setAttribute("error", "Error: Please check your username and password.");
 			req.getRequestDispatcher("index.jsp").forward(req,resp);
 		}
 	}
