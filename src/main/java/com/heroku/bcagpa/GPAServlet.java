@@ -173,9 +173,25 @@ public class GPAServlet extends HttpServlet {
 	}
 	
 	private double findYearGPA() {
-		double total = this.tri1GPA+this.tri2GPA+this.tri3GPA;
+		double credits = 0.0;
+		double equivalent = 0.0;
+		for (int i = 0; i < tri1.size(); i++) {
+			Grade current = tri1.get(i);
+			credits += current.getCredits();
+			equivalent += current.getCredits() * current.getGrade();
+		}
+		for (int i = 0; i < tri2.size(); i++) {
+			Grade current = tri2.get(i);
+			credits += current.getCredits();
+			equivalent += current.getCredits() * current.getGrade();
+		}
+		for (int i = 0; i < tri3.size(); i++) {
+			Grade current = tri3.get(i);
+			credits += current.getCredits();
+			equivalent += current.getCredits() * current.getGrade();
+		}
 		
-		return total/3.0;
+		return equivalent/credits;
 	}
 
 	private double findCredits(String mods) {
