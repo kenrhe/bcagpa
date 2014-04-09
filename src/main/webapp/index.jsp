@@ -25,7 +25,6 @@
 	}
 	#notice{
 		font: 12px sans-serif;
-		margin-top:20%;
 		text-align:center;
 	}
 	.clickme {
