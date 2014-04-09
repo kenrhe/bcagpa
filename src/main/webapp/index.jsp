@@ -84,7 +84,7 @@ ${error}
 		<b>How accurate is this application?</b>
 		&nbsp;&nbsp;&nbsp;
 		<br />
-		This app is extremely accurate and uses a GPA calculation formula provided by guidance. It does not count classes with tildes (~) (aka non GPA classes such as gym). Every factor has been accounted for. The year GPA displayed above will end up being accurate within 0.05 points.
+		This app is extremely accurate and uses a GPA calculation formula provided by guidance. It does not count classes with tildes (~) (aka non GPA classes such as gym). Every factor has been accounted for. The year GPA displayed will end up being accurate within 0.05 points.
 		<br />
 		<br />
 		<b>I believe there is an error within your app. Where can I report it?</b>
