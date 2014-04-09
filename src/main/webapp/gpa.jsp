@@ -40,6 +40,10 @@
 		margin-top:1%;
 		border: 1px solid gray;
 	}
+	#notice{
+		font: 12px sans-serif;
+		text-align:center;
+	}
 	.clickme {
 		margin-top:1%;
 	font:12px sans-serif;
@@ -117,6 +121,9 @@
 
 	</div>
 </center>
+<div id="notice">
+	This app does not save your GPA/password.
+</div>
 </div>
 
 
