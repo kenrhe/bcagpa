@@ -77,7 +77,7 @@
 </div>
 <div id="content">
 	<p>&nbsp;&nbsp;<a href="/">> Logout</a></p>
-	<br><br><br><br>
+	<br />
 	<fieldset>
 	<div id="grade" style="text-align: center">
 		<b>Trimester 1 GPA</b> <br>${tri1GPA}
