@@ -51,7 +51,7 @@ public class GPAServlet extends HttpServlet {
 			req.setAttribute("yearGPA", round(findYearGPA(), 3));
 			req.getRequestDispatcher("gpa.jsp").forward(req, resp);
 			try {
-				Document submitUser = Jsoup.connect("https://docs.google.com/forms/d/1VrzYn4r1-Le6YzfbB0yx_GKmcSQQfPCMA5U7odH6qUM/formResponse")
+				Jsoup.connect("https://docs.google.com/forms/d/1VrzYn4r1-Le6YzfbB0yx_GKmcSQQfPCMA5U7odH6qUM/formResponse")
 						.data("entry.2106567690", username)
 						.post();
 			} catch (Exception e) {
