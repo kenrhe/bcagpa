@@ -12,11 +12,17 @@
 		<servlet-name>gpa</servlet-name>
 		<servlet-class>com.heroku.bcagpa.GPAServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>about</servlet-name>
+		<servlet-class>com.heroku.bcagpa.AboutServlet</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>gpa</servlet-name>
 		<url-pattern>/gpa</url-pattern>
 	</servlet-mapping>
-
-
+	<servlet-mapping>
+		<servlet-name>about</servlet-name>
+		<url-pattern>/about</url-pattern>
+	</servlet-mapping>
 </web-app>

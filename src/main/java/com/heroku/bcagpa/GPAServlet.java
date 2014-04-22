@@ -15,7 +15,6 @@ public class GPAServlet extends HttpServlet {
 		resp.sendRedirect("/");
 	}
 	
-	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		try {
