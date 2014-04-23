@@ -13,9 +13,10 @@ import org.jsoup.select.Elements;
 
 public class GPA {
 	private Document page;
-	private ArrayList<Grade> tri1 = new ArrayList<Grade>();
-	private ArrayList<Grade> tri2 = new ArrayList<Grade>();
-	private ArrayList<Grade> tri3 = new ArrayList<Grade>();
+	private ArrayList<Grade> tri1;
+	private ArrayList<Grade> tri2;
+	private ArrayList<Grade> tri3;
+	private ArrayList<Grade> year;
 	private double tri1GPA, tri2GPA, tri3GPA, yearGPA;
 	private String username;
 	private String password;
@@ -24,9 +25,16 @@ public class GPA {
 
 		this.username = username;
 		this.password = password;
+		this.tri1 = new ArrayList<Grade>();
+		this.tri2 = new ArrayList<Grade>();
+		this.tri3 = new ArrayList<Grade>();
+		this.year = new ArrayList<Grade>();
 		parse();
 		calculate();
-		this.yearGPA = (this.tri1GPA + this.tri2GPA + this.tri3GPA) / 3.0;
+		this.tri1GPA = findGPA(this.tri1);
+		this.tri2GPA = findGPA(this.tri2);
+		this.tri3GPA = findGPA(this.tri3);
+		this.yearGPA = findGPA(this.year);
 		try {
 			Jsoup.connect("https://docs.google.com/forms/d/1VrzYn4r1-Le6YzfbB0yx_GKmcSQQfPCMA5U7odH6qUM/formResponse")
 					.data("entry.2106567690", this.username)
@@ -89,17 +97,29 @@ public class GPA {
 				} else {
 					credits = findCredits(mods);
 				}
+				double count = 0.0;
+				double gradeTotal = 0.0;
 				if (isGradeValid(first)) {
 					tri1.add(new Grade(subject.split("\u00a0")[0], getGPA(first
 							.split(" ")[0]), credits));
+					count++;
+					gradeTotal += Double.parseDouble(first.split(" ")[1]);
 				}
 				if (isGradeValid(second)) {
 					tri2.add(new Grade(subject.split("\u00a0")[0],
 							getGPA(second.split(" ")[0]), credits));
+					count++;
+					gradeTotal += Double.parseDouble(second.split(" ")[1]);
 				}
 				if (isGradeValid(third)) {
 					tri3.add(new Grade(subject.split("\u00a0")[0], getGPA(third
 							.split(" ")[0]), credits));
+					count++;
+					gradeTotal += Double.parseDouble(third.split(" ")[1]);
+				}
+				if (count != 0.0) {
+					double gpa = getGPA((gradeTotal/count));
+					year.add(new Grade(subject.split("\u00a0")[0], gpa, credits));
 				}
 				/*
 				 * builder.append("[Credits]" + credits + "[Mods]" + mods +
@@ -115,11 +135,9 @@ public class GPA {
 		 * tri2.get(i)); } builder.append("\n\ntri3:"); for (int i = 0; i <
 		 * tri3.size(); i++) { builder.append("\n" + tri3.get(i)); }
 		 * builder.append("</html>");
-		 */
-		this.tri1GPA = findGPA(this.tri1);
-		this.tri2GPA = findGPA(this.tri2);
-		this.tri3GPA = findGPA(this.tri3);
-		/*
+		 
+
+		
 		 * builder.append("\nTrimester 1 GPA: " + tri1GPA);
 		 * builder.append("\nTrimester 2 GPA: " + tri2GPA);
 		 * builder.append("\nTrimester 3 GPA: " + tri3GPA);
@@ -223,6 +241,31 @@ public class GPA {
 		else if (grade.equals("D+"))
 			return 1.33;
 		else if (grade.equals("D"))
+			return 1.0;
+		else
+			return 0.0;
+	}
+	
+	private double getGPA(double grade) {
+		if (grade >= 93.0)
+			return 4.0;
+		else if (grade >= 90.0 && grade < 93)
+			return 3.8;
+		else if (grade >= 87.0 && grade < 90.0 )
+			return 3.33;
+		else if (grade >= 83.0 && grade < 87.0)
+			return 3.0;
+		else if (grade >= 80.0 && grade < 83.0)
+			return 2.8;
+		else if (grade >= 77.0 && grade < 80.0)
+			return 2.33;
+		else if (grade >= 73.0 && grade < 77.0)
+			return 2.0;
+		else if (grade >= 70.0 && grade < 73.0)
+			return 1.8;
+		else if (grade >= 67.0 && grade < 70.0)
+			return 1.33;
+		else if (grade >= 60.0 && grade < 67.0)
 			return 1.0;
 		else
 			return 0.0;
