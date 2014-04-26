@@ -118,7 +118,7 @@ public class GPA {
 					gradeTotal += Double.parseDouble(third.split(" ")[1]);
 				}
 				if (count != 0.0) {
-					double gpa = getGPA((gradeTotal/count));
+					double gpa = getGPA(gradeTotal/count);
 					year.add(new Grade(subject.split("\u00a0")[0], gpa, credits));
 				}
 				/*
