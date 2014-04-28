@@ -39,6 +39,7 @@
         <br />
         If you have a suggestion, feel free to message me on facebook or e-mail me at hwarhe@bergen.org.
         <br />
+        <br />
         Special thanks to Noa Cebalo for the logo.
     </div>
 
