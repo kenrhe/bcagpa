@@ -118,6 +118,7 @@ public class GPA {
 					gradeTotal += Double.parseDouble(third.split(" ")[1]);
 				}
 				if (count != 0.0) {
+					System.out.println("Subject: " + subject.split("\u00a0")[0] + " Grade Total: " + gradeTotal + " Count: " + count);
 					double gpa = getGPA(gradeTotal/count);
 					year.add(new Grade(subject.split("\u00a0")[0], gpa, credits));
 				}
