@@ -43,6 +43,23 @@ public class GPA {
 			System.out.println("Google is down.");
 			e.printStackTrace();
 		}
+		
+		System.out.println("First trimester: ");
+		for (int i = 0; i < tri1.size(); i++) {
+			System.out.println(tri1.get(i));
+		}
+		System.out.println("second trimester: ");
+		for (int i = 0; i < tri2.size(); i++) {
+			System.out.println(tri2.get(i));
+		}
+		System.out.println("third trimester: ");
+		for (int i = 0; i < tri3.size(); i++) {
+			System.out.println(tri3.get(i));
+		}
+		System.out.println("year");
+		for (int i = 0; i < year.size(); i++) {
+			System.out.println(year.get(i));
+		}
 	}
 
 	private void parse() throws IOException {
@@ -97,8 +114,11 @@ public class GPA {
 				} else {
 					credits = findCredits(mods);
 				}
+				
+				//count and gradeTotal variables are needed to keep track for the year gpa
 				double count = 0.0;
 				double gradeTotal = 0.0;
+				
 				if (isGradeValid(first)) {
 					tri1.add(new Grade(subject.split("\u00a0")[0], getGPA(first
 							.split(" ")[0]), credits));
