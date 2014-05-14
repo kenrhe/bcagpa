@@ -43,7 +43,7 @@ public class GPA {
 			System.out.println("Google is down.");
 			e.printStackTrace();
 		}
-		
+		System.out.println("--------------------");
 		System.out.println("First trimester: ");
 		for (int i = 0; i < tri1.size(); i++) {
 			System.out.println(tri1.get(i));
@@ -60,6 +60,7 @@ public class GPA {
 		for (int i = 0; i < year.size(); i++) {
 			System.out.println(year.get(i));
 		}
+		System.out.println("--------------------");
 	}
 
 	private void parse() throws IOException {
@@ -99,13 +100,13 @@ public class GPA {
 			if (column.size() > 10) {
 				String mods = column.get(0).text();
 				String subject = column.get(11).text();
+				
+				if (subject.contains("~")) continue;
+				
 				String first = column.get(12).text();
 				String second = column.get(13).text();
 				String third = column.get(14).text();
 				double credits = 0.0;
-				if (subject.contains("~")) {
-					continue;
-				}
 				String[] modsArray = mods.split(" ");
 				if (modsArray.length > 1) {
 					for (int j = 0; j < modsArray.length; j++) {
