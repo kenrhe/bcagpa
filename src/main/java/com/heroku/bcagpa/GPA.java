@@ -43,24 +43,26 @@ public class GPA {
 			System.out.println("Google is down.");
 			e.printStackTrace();
 		}
-		System.out.println("--------------------");
-		System.out.println("First trimester: ");
+		StringBuilder builder = new StringBuilder();
+		builder.append("--------------------");
+		builder.append("First trimester: ");
 		for (int i = 0; i < tri1.size(); i++) {
-			System.out.println(tri1.get(i));
+			builder.append(tri1.get(i));
 		}
-		System.out.println("second trimester: ");
+		builder.append("second trimester: ");
 		for (int i = 0; i < tri2.size(); i++) {
-			System.out.println(tri2.get(i));
+			builder.append(tri2.get(i));
 		}
-		System.out.println("third trimester: ");
+		builder.append("third trimester: ");
 		for (int i = 0; i < tri3.size(); i++) {
-			System.out.println(tri3.get(i));
+			builder.append(tri3.get(i));
 		}
-		System.out.println("year");
+		builder.append("year");
 		for (int i = 0; i < year.size(); i++) {
-			System.out.println(year.get(i));
+			builder.append(year.get(i));
 		}
-		System.out.println("--------------------");
+		builder.append("--------------------");
+		System.out.println(builder.toString());
 	}
 
 	private void parse() throws IOException {
