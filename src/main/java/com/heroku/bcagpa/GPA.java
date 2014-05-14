@@ -44,24 +44,24 @@ public class GPA {
 			e.printStackTrace();
 		}
 		StringBuilder builder = new StringBuilder();
-		builder.append("--------------------");
-		builder.append("First trimester: ");
+		builder.append("--------------------\n");
+		builder.append("First trimester: \n");
 		for (int i = 0; i < tri1.size(); i++) {
-			builder.append(tri1.get(i));
+			builder.append(tri1.get(i) + "\n");
 		}
-		builder.append("second trimester: ");
+		builder.append("second trimester: \n");
 		for (int i = 0; i < tri2.size(); i++) {
-			builder.append(tri2.get(i));
+			builder.append(tri2.get(i) + "\n");
 		}
-		builder.append("third trimester: ");
+		builder.append("third trimester: \n");
 		for (int i = 0; i < tri3.size(); i++) {
-			builder.append(tri3.get(i));
+			builder.append(tri3.get(i) + "\n");
 		}
-		builder.append("year");
+		builder.append("year\n");
 		for (int i = 0; i < year.size(); i++) {
-			builder.append(year.get(i));
+			builder.append(year.get(i) + "\n");
 		}
-		builder.append("--------------------");
+		builder.append("--------------------\n");
 		System.out.println(builder.toString());
 	}
 
