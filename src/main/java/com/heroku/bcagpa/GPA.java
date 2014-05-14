@@ -106,6 +106,7 @@ public class GPA {
 				String first = column.get(12).text();
 				String second = column.get(13).text();
 				String third = column.get(14).text();
+				System.out.println("[mods]->" + mods + "[subject]->" + subject + "[first]->" + first + "[second]->" + second + "[third]->" + third);
 				double credits = 0.0;
 				String[] modsArray = mods.split(" ");
 				if (modsArray.length > 1) {
