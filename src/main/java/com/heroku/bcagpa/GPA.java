@@ -43,23 +43,31 @@ public class GPA {
 			System.out.println("Google is down.");
 			e.printStackTrace();
 		}
+		
+		
+		
 		StringBuilder builder = new StringBuilder();
+		Grade[] tri1a = tri1.toArray(new Grade[tri1.size()]);
+		Grade[] tri2a = tri2.toArray(new Grade[tri2.size()]);
+		Grade[] tri3a = tri3.toArray(new Grade[tri3.size()]);
+		Grade[] yeara = year.toArray(new Grade[year.size()]);
+		
 		builder.append("--------------------\n");
 		builder.append("First trimester: \n");
-		for (int i = 0; i < tri1.size(); i++) {
-			builder.append(tri1.get(i) + "\n");
+		for (int i = 0; i < tri1a.length; i++) {
+			builder.append(tri1a[i] + "\n");
 		}
 		builder.append("second trimester: \n");
-		for (int i = 0; i < tri2.size(); i++) {
-			builder.append(tri2.get(i) + "\n");
+		for (int i = 0; i < tri2a.length; i++) {
+			builder.append(tri2a[i] + "\n");
 		}
 		builder.append("third trimester: \n");
-		for (int i = 0; i < tri3.size(); i++) {
-			builder.append(tri3.get(i) + "\n");
+		for (int i = 0; i < tri3a.length; i++) {
+			builder.append(tri3a[i] + "\n");
 		}
 		builder.append("year\n");
-		for (int i = 0; i < year.size(); i++) {
-			builder.append(year.get(i) + "\n");
+		for (int i = 0; i < yeara.length; i++) {
+			builder.append(yeara[i] + "\n");
 		}
 		builder.append("--------------------\n");
 		System.out.println(builder.toString());
