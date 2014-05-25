@@ -118,13 +118,23 @@ public class GPA {
 				String third = column.get(14).text();
 				System.out.println("[mods]->" + mods + "[subject]->" + subject + "[first]->" + first + "[second]->" + second + "[third]->" + third);
 				double credits = 0.0;
+				double numberOfTris = 0.0;
 				String[] modsArray = mods.split(" ");
+				if (isGradeValid(first)) {
+					numberOfTris+=1.0;
+				}
+				if (isGradeValid(second)) {
+					numberOfTris+=1.0;
+				}
+				if (isGradeValid(third)) {
+					numberOfTris+=1.0;
+				}
 				if (modsArray.length > 1) {
 					for (int j = 0; j < modsArray.length; j++) {
-						credits += findCredits(modsArray[j]);
+						credits += findCredits(modsArray[j], numberOfTris);
 					}
 				} else {
-					credits = findCredits(mods);
+					credits = findCredits(mods, numberOfTris);
 				}
 				
 				//count and gradeTotal variables are needed to keep track for the year gpa
@@ -191,7 +201,7 @@ public class GPA {
 
 
 
-	private double findCredits(String mods) {
+	private double findCredits(String mods, double numberOfTris) {
 		if (mods.equals("25-27(M,R)") || mods.equals("25-27(T,F)")
 				|| mods.equals("04-09(W)")) {
 			return 1.0;
@@ -236,7 +246,7 @@ public class GPA {
 				// error;
 			}
 		}
-		return (numberOfMods * numberOfTimes) / 2.0;
+		return (numberOfMods * numberOfTimes) * numberOfTris / 3.0 / 2.0;
 	}
 
 	private String match(String pattern, String line) {
