@@ -196,6 +196,9 @@ public class GPA {
 				|| mods.equals("04-09(W)")) {
 			return 1.0;
 		}
+		if (mods.equals("01-09(W)")) {
+			return 1.5;
+		}
 		double numberOfMods = 0.0;
 		double numberOfTimes = 0.0;
 		String modsPattern = "\\d\\d-\\d\\d";
@@ -247,7 +250,7 @@ public class GPA {
 
 	private boolean isGradeValid(String grade) {
 		if (grade.contains("P") || grade.contains("--")
-				|| grade.contains("\u00a0")) {
+				|| grade.contains("\u00a0") || grade.contains("I") || grade.contains("M")) {
 			return false;
 		}
 		return true;
