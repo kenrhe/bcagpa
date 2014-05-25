@@ -202,8 +202,7 @@ public class GPA {
 
 
 	private double findCredits(String mods, double numberOfTris) {
-		if (mods.equals("25-27(M,R)") || mods.equals("25-27(T,F)")
-				|| mods.equals("04-09(W)")) {
+		if (mods.equals("25-27(M,R)") || mods.equals("25-27(T,F)")) {
 			return 1.0;
 		}
 		if (mods.equals("01-09(W)")) {
