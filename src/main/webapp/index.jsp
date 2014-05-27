@@ -12,7 +12,7 @@
     <body>
 
         <h1>BCA <strong>GPA</strong> CALCULATOR</h1>
-        <h2>Developed By Hyobin Im</h2>
+        <h2>Developed By Kenneth Rhee</h2>
         <nav class="buttons">
             <a class="current" href="/">HOME</a>
             <a href="/about">ABOUT THIS APP</a>
