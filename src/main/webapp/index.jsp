@@ -6,7 +6,7 @@
         <meta name="description" content="GPA Calculator" />
         <meta name="keywords" content="gpa" />
         <meta name="author" content="Kenneth Rhee" />
-        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="icon" type="image/png" href="icon.png" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
     </head>
     <body>
