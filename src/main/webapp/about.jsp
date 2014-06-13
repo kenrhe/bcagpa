@@ -12,6 +12,7 @@
     <body>
         <h1>BCA <strong>GPA</strong> CALCULATOR</h1>
         <h2>Developed By Kenneth Rhee</h2>
+        
         <nav class="buttons">
             <a href="/">HOME</a>
             <a class="current" href="/about">ABOUT THIS APP</a>
