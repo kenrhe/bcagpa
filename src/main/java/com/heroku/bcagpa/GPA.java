@@ -145,20 +145,35 @@ public class GPA {
 					tri1.add(new Grade(subject.split("\u00a0")[0], getGPA(first
 							.split(" ")[0]), credits));
 					count++;
-					gradeTotal += Double.parseDouble(first.split(" ")[1]);
+					double numberGrade = Double.parseDouble(first.split(" ")[1]); // number grade
+					if (numberGrade == 0.0 && getGPA(first.split(" ")[0]) == 4.0) {
+						gradeTotal += 100;
+					} else {
+						gradeTotal += numberGrade;
+					}
 				}
 				if (isGradeValid(second)) {
 					System.out.println("WARNING!!!!!! " + second.split(" ")[0]);
 					tri2.add(new Grade(subject.split("\u00a0")[0],
 							getGPA(second.split(" ")[0]), credits));
 					count++;
-					gradeTotal += Double.parseDouble(second.split(" ")[1]);
+					double numberGrade = Double.parseDouble(second.split(" ")[1]); // number grade
+					if (numberGrade == 0.0 && getGPA(second.split(" ")[0]) == 4.0) {
+						gradeTotal += 100;
+					} else {
+						gradeTotal += numberGrade;
+					}
 				}
 				if (isGradeValid(third)) {
 					tri3.add(new Grade(subject.split("\u00a0")[0], getGPA(third
 							.split(" ")[0]), credits));
 					count++;
-					gradeTotal += Double.parseDouble(third.split(" ")[1]);
+					double numberGrade = Double.parseDouble(third.split(" ")[1]); // number grade
+					if (numberGrade == 0.0 && getGPA(third.split(" ")[0]) == 4.0) {
+						gradeTotal += 100;
+					} else {
+						gradeTotal += numberGrade;
+					}
 				}
 				if (count != 0.0) {
 					double gpa = getGPA(gradeTotal/count);
