@@ -148,6 +148,7 @@ public class GPA {
 					gradeTotal += Double.parseDouble(first.split(" ")[1]);
 				}
 				if (isGradeValid(second)) {
+					System.out.println("WARNING!!!!!! " + second.split(" ")[0]);
 					tri2.add(new Grade(subject.split("\u00a0")[0],
 							getGPA(second.split(" ")[0]), credits));
 					count++;
