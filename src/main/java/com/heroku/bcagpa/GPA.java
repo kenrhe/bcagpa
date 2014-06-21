@@ -114,7 +114,11 @@ public class GPA {
 				String mods = column.get(0).text();
 				String subject = column.get(11).text();
 				
-				if (subject.contains("~")) continue;
+				if (subject.contains("~")) {
+					//implementing year line 119
+					System.out.println("[debug2]" + subject + " " + column.get(15).text());
+					continue;
+				}
 				
 				String first = column.get(12).text();
 				String second = column.get(13).text();
@@ -123,7 +127,7 @@ public class GPA {
 				
 				//implementing year
 				String fourth = column.get(15).text();
-				System.out.println("[debug]" + fourth);
+				System.out.println("[debug]" + subject + " " + fourth);
 				
 				
 				System.out.println("[mods]->" + mods + "[subject]->" + subject + "[first]->" + first + "[second]->" + second + "[third]->" + third);
