@@ -32,6 +32,7 @@ public class GPA {
 		this.tri2 = new ArrayList<Grade>();
 		this.tri3 = new ArrayList<Grade>();
 		this.year = new ArrayList<Grade>();
+		this.testYear = new ArrayList<Grade>();
 		try {
 		parse();
 		calculate();
