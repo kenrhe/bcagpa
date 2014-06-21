@@ -21,6 +21,9 @@ public class GPA {
 	private String username;
 	private String password;
 
+	//implement year
+	private ArrayList<Grade> testYear;
+	
 	public GPA(String username, String password) throws Exception {
 
 		this.username = username;
@@ -116,6 +119,13 @@ public class GPA {
 				String first = column.get(12).text();
 				String second = column.get(13).text();
 				String third = column.get(14).text();
+				
+				
+				//implementing year
+				String fourth = column.get(15).text();
+				System.out.println("[debug]" + fourth);
+				
+				
 				System.out.println("[mods]->" + mods + "[subject]->" + subject + "[first]->" + first + "[second]->" + second + "[third]->" + third);
 				double credits = 0.0;
 				double numberOfTris = 0.0;
