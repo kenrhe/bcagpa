@@ -18,7 +18,7 @@
             <a href="/about">ABOUT THIS APP</a>
         </nav>
         ${error}
-        <div style="\" class="alert"><b>Hi! I am currently updating the BCA GPA calculator so expect some downtime. :)</b></div>
+        <div style="\" class="alert-success"><b>The BCA GPA app has been successfully updated to reflect PowerSchool's year grades.</b></div>
       <form class="form-signin" role="form" name="login" action="/gpa" method="POST">
         <input name="username" type="username" class="form-control" placeholder="PowerSchool Username" required autofocus>
         <input name="password" type="password" class="form-control" placeholder="PowerSchool Password" required>
