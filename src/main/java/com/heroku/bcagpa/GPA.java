@@ -36,8 +36,8 @@ public class GPA {
 		this.year = new ArrayList<Grade>();
 		this.yearColumn = new ArrayList<Grade>();
 		try {
-		parse();
-		calculate();
+			parse();
+			calculate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -59,8 +59,6 @@ public class GPA {
 			System.out.println("Google is down.");
 			e.printStackTrace();
 		}
-		
-		
 		
 		StringBuilder builder = new StringBuilder();
 		Grade[] tri1a = tri1.toArray(new Grade[tri1.size()]);
