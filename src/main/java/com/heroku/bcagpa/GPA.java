@@ -43,30 +43,34 @@ public class GPA {
 			System.out.println("Google is down.");
 			e.printStackTrace();
 		}
-
+		
+		
+		
+		StringBuilder builder = new StringBuilder();
 		Grade[] tri1a = tri1.toArray(new Grade[tri1.size()]);
 		Grade[] tri2a = tri2.toArray(new Grade[tri2.size()]);
 		Grade[] tri3a = tri3.toArray(new Grade[tri3.size()]);
 		Grade[] yeara = year.toArray(new Grade[year.size()]);
 		
-		System.out.println("--------------------\n");
-		System.out.println("First trimester: \n");
+		builder.append("[START]--------------------[START]\n");
+		builder.append("First trimester: \n");
 		for (int i = 0; i < tri1a.length; i++) {
-			System.out.println(tri1a[i] + "\n");
+			builder.append("[TRI1]" + tri1a[i] + "\n");
 		}
-		System.out.println("second trimester: \n");
+		builder.append("second trimester: \n");
 		for (int i = 0; i < tri2a.length; i++) {
-			System.out.println(tri2a[i] + "\n");
+			builder.append("[TRI2]" + tri2a[i] + "\n");
 		}
-		System.out.println("third trimester: \n");
+		builder.append("third trimester: \n");
 		for (int i = 0; i < tri3a.length; i++) {
-			System.out.println(tri3a[i] + "\n");
+			builder.append("[TRI3]" + tri3a[i] + "\n");
 		}
-		System.out.println("year\n");
+		builder.append("year\n");
 		for (int i = 0; i < yeara.length; i++) {
-			System.out.println(yeara[i] + "\n");
+			builder.append("[YEAR]" + yeara[i] + "\n");
 		}
-		System.out.println("--------------------\n");
+		builder.append("[END]--------------------[END]\n");
+		System.out.println(builder.toString());
 	}
 
 	private void parse() throws IOException {
