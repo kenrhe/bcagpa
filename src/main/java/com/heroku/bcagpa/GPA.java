@@ -26,7 +26,6 @@ public class GPA {
 	private double testYearGPA;
 	
 	public GPA(String username, String password) throws Exception {
-
 		this.username = username;
 		this.password = password;
 		this.tri1 = new ArrayList<Grade>();
