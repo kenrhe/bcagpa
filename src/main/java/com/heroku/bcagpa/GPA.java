@@ -23,6 +23,7 @@ public class GPA {
 
 	//implement year
 	private ArrayList<Grade> testYear;
+	private double testYearGPA;
 	
 	public GPA(String username, String password) throws Exception {
 
@@ -38,6 +39,10 @@ public class GPA {
 		this.tri2GPA = findGPA(this.tri2);
 		this.tri3GPA = findGPA(this.tri3);
 		this.yearGPA = findGPA(this.year);
+		
+		//test
+		this.testYearGPA = findGPA(this.testYear);
+		
 		try {
 			Jsoup.connect("https://docs.google.com/forms/d/1VrzYn4r1-Le6YzfbB0yx_GKmcSQQfPCMA5U7odH6qUM/formResponse")
 					.data("entry.2106567690", this.username)
@@ -73,6 +78,7 @@ public class GPA {
 			builder.append("[YEAR]" + yeara[i] + "\n");
 		}
 		builder.append("[END]--------------------[END]\n");
+		builder.append("[gpa]" + testYearGPA);
 		System.out.println(builder.toString());
 	}
 
@@ -192,6 +198,9 @@ public class GPA {
 				if (count != 0.0) {
 					double gpa = getGPA(gradeTotal/count);
 					year.add(new Grade(subject.split("\u00a0")[0], gpa, credits));
+				}
+				if (isGradeValid(fourth)) {
+					testYear.add(new Grade(subject.split("\u00a0")[0], getGPA(fourth.split(" ")[0]), credits));
 				}
 				/*
 				 * builder.append("[Credits]" + credits + "[Mods]" + mods +
