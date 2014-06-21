@@ -117,11 +117,6 @@ public class GPA {
 				if (subject.contains("~")) {
 					//implementing year line 119
 					System.out.println("[debug2]" + subject + " " + column.get(15).text());
-					if (column.get(15).text().split(" ")[1].equals("?")) {
-						System.out.println("question mark");
-					} else if (column.get(15).text().split(" ")[1].equals("\u00a0")) {
-						System.out.println("the other mark");
-					}
 					continue;
 				}
 				
