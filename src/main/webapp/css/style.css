@@ -245,4 +245,5 @@ h2 {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdff0d8', endColorstr='#ffc8e5bc', GradientType=0);
   background-repeat: repeat-x;
   border-color: #b2dba1;
+  margin:0 auto;
 }
