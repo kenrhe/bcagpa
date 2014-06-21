@@ -41,6 +41,7 @@
         <br />
         <br />
     </div>
+    Release date: April 7th, 2014
 
 </body>
 </html>
