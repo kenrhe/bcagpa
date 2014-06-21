@@ -33,8 +33,12 @@ public class GPA {
 		this.tri2 = new ArrayList<Grade>();
 		this.tri3 = new ArrayList<Grade>();
 		this.year = new ArrayList<Grade>();
+		try {
 		parse();
 		calculate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		this.tri1GPA = findGPA(this.tri1);
 		this.tri2GPA = findGPA(this.tri2);
 		this.tri3GPA = findGPA(this.tri3);
