@@ -17,7 +17,7 @@
         <a href="/about">ABOUT THIS APP</a>
         <a href="/">LOGOUT</a>
     </nav>
-    <div style="\" class="alert-success">The <b>BCA GPA</b> app has been successfully updated to reflect PowerSchool's year grades.</div>
+    <div style="\" class="alert-success">The <b>BCA GPA</b> app has been updated to reflect PowerSchool's year grades.</div>
 
     <table cellspacing="0">
         <tr><th>Period</th><th>GPA</th></tr>
