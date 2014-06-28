@@ -22,7 +22,7 @@ public class GPAServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		try {
-			String username = req.getParameter("username");
+			String username = req.getParameter("username").replace("@bergen.org", "");
 			String password = req.getParameter("password");
 			GPA user = new GPA(username, password);
 			req.setAttribute("tri1GPA", round(user.getTriOneGPA(), 3));
