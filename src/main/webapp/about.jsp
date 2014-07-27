@@ -40,8 +40,9 @@
         If you have a suggestion, feel free to message me on facebook or e-mail me at hwarhe@bergen.org.
         <br />
         <br />
+        Release date: April 7th, 2014
     </div>
-    Release date: April 7th, 2014
+    
 
 </body>
 </html>
