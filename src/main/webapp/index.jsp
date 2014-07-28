@@ -17,8 +17,8 @@
             <a class="current" href="/">HOME</a>
             <a href="/about">ABOUT THIS APP</a>
         </nav>
-        ${error}
-	<div style="" class="alert"><b>Woops!</b> PowerSchool is closed at the moment, which means that this app will not work. Enjoy the summer and check back late August!</div>
+       <!-- ${error} -->
+	<div style="" class="alert">PowerSchool is closed at the moment, which means that this app will not work. Enjoy the summer and check back late August!</div>
       <form class="form-signin" role="form" name="login" action="/gpa" method="POST">
         <input name="username" type="username" class="form-control" placeholder="PowerSchool Username" required autofocus>
         <input name="password" type="password" class="form-control" placeholder="PowerSchool Password" required>
