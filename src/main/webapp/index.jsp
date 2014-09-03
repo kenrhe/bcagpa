@@ -17,7 +17,7 @@
             <a class="current" href="/">HOME</a>
             <a href="/about">ABOUT THIS APP</a>
         </nav>
-	<div style="" class="alert">${error}</div>
+	${error}
 	<div class="alert">This app will be back up mid September. Stay tuned! - Kenneth</div>
       <form class="form-signin" role="form" name="login" action="/gpa" method="POST">
         <input name="username" type="username" class="form-control" placeholder="PowerSchool Username" required autofocus>
