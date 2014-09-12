@@ -32,6 +32,7 @@ public class GPAServlet extends HttpServlet {
 			req.getRequestDispatcher("gpa.jsp").forward(req, resp);
 			System.out.println("Fulfilled request for user: " + username);
 		} catch (Exception e) {
+			System.err.println(new Throwable().getStackTrace()[0].getLineNumber());
 			System.out.println(e);
 			System.out.println("[cError]" + e.getMessage());
 			req.setAttribute("error", "<div style=\"\" class=\"alert\"><b>Woops!</b> Looks like your username/password is wrong. Try again.</div>");
